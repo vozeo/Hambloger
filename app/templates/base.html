@@ -25,10 +25,17 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/">Newest</a></li>
+                <li><a href="/">我的关注</a></li>
+                <li><a href="/">我的文章</a></li>
             </ul>
-        </div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('auth.logout') }}">登出</a></li>
+                {% else %}
+                <li><a href="{{ url_for('auth.login') }}">登录</a></li>
+                {% endif %}
+            </ul>
+            </div>
     </div>
 </div>
 {% endblock %}
