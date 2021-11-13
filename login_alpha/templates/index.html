@@ -1,0 +1,44 @@
+{% from 'bootstrap/form.html' import render_form %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} login-test {% endblock %}</title>
+</head>
+<body>
+    <!-- 主窗体 -->
+    <div class="title">
+        <h1>{{ p_title }}</h1>
+    </div>
+    {% for i in get_flashed_messages() %}
+    <div class="title">
+        <h3>{{ i }}</h3>
+    </div>
+    {% endfor %}
+    <div class="content">
+        {% if current_user.is_authenticated %}
+        <p>User ID: {{ current_user.id }}</p>
+        <p>User Nick: {{ current_user.nick }}</p>
+        <p>User Type: {{ current_user.type }}</p>
+        {% else %}
+        <p>Guest User</p>
+        {% endif %}
+    </div>
+    <div>
+        <div class="options">
+            <form method="post">
+                {% if current_user.is_authenticated %}
+                {{ render_form(qf) }}
+                {% else %}
+                {{ render_form(lf) }}
+                {% endif %}
+            </form>
+        </div>
+        <div class="options">
+            <form method="post">
+                {{ render_form(rf) }}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

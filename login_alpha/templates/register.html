@@ -1,0 +1,31 @@
+{% from 'bootstrap/form.html' import render_form %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %} login-test {% endblock %}</title>
+</head>
+<body>
+    <div class="title">
+        <h3>Register</h3>
+    </div>
+    {% for i in get_flashed_messages() %}
+    <div class="title">
+        <h3>{{ i }}</h3>
+    </div>
+    {% endfor %}
+    <div class="notify">
+        <p>Registration Rule</p>
+        <ol>
+            <p>User ID must be composed with English characters, numeric signs and underlines only.</p>
+            <p>Password must be composed with at least two of these character classes: English characters, numeric signs or special signs.</p>
+            <p>User ID and password both might have a length of between 8 and 25 characters.</p>
+            <p>Account Rank is a specified argument with an integer range of [-1, 4].</p>
+        </ol>
+    </div>
+    <!-- 登陆表单 -->
+    <div class="register">
+        {{ render_form(form) }}
+    </div>
+</body>
+</html>
