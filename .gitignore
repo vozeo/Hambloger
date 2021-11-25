@@ -33,3 +33,7 @@
 
 *.db
 *.pyc
+
+/.idea
+/.git
+/env
