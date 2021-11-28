@@ -8,7 +8,9 @@
     <link rel="icon" href="{{ url_for('static', filename='icons/ham2.png') }}"
         type="image/x-icon">
     <link href="{{ url_for('static',filename='css/base.css') }}" rel="stylesheet">
+    {% block head %} {% endblock %}
     <title> {% block title %}Hambloger{% endblock %}</title>
+    
 </head>
 
 <body>
@@ -28,7 +30,7 @@
                     <ul class="navbar-right-shell">
                         <li class="navbar-right-box"><a href="/">个人主页</a></li>
                         <li class="navbar-right-box"><a href="/">注册</a></li>
-                        <li class="navbar-right-box"><a href="/">登录</a></li>
+                        <li class="navbar-right-box"><a href="{{url_for('auth.login')}}">登录</a></li>
                     </ul>
                 </div>
             </div>
@@ -37,6 +39,7 @@
 
 
         <div class="main">
+            {% if current_user.is_authenticated %}
             <div class="main-left-container">
                 <div class="sidebar">
                     <a class="sidebar-box" href="/">
@@ -57,6 +60,7 @@
                     </a>
                 </div>
             </div>
+            {% endif %}
             <div class="main-middle-container">
                 {% block page_content %}  {% endblock %}
             </div>

@@ -3,8 +3,8 @@ body {
 }
 
 .navbar-container {
-    background-color: rgb(248, 240, 228);
-    height: 80px;
+    background-color: rgb(9,7,35);
+    height: 50px;
     display: grid;
     grid-template-areas: 'left middle right';
 }
@@ -21,23 +21,19 @@ body {
     grid-area: right;
 }
 
-.main {
-    display: grid;
-    grid-template-areas: 'left-container middle-container';
-}
-
 .main-left-container {
-    grid-area: left-container;
+    float: left;
+    width: 95px;
 }
 
-.main-middle-container {
-    grid-area: middle-container;
+.main-left-container:hover {
+    width: 270px;
 }
 
 .logo {
-    height: 80px;
-    width: 200px;
-    margin-top: 7px;
+    height: 45px;
+    width: 160px;
+    margin-top: 5px;
     margin-left: 20px;
 }
 
@@ -104,16 +100,12 @@ body {
     margin: 5px 0 0 5px;
 }
 
-.navbar-right-container {
-
-}
-
 .navbar-right-shell {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    height: 80px;
+    height: 50px;
 }
 
 .navbar-right-box {
@@ -124,38 +116,42 @@ body {
     display: block;
     color: #8a8a8a;
     text-align: center;
-    padding: 28px 30px;
-    font-size: 20px;
+    padding: 14px 26px;
+    font-size: 16px;
     text-decoration: none;
 }
 
 .navbar-right-box a:hover{
-    background-color: rgb(87, 87, 87);
-    color: #e6e9d4;
+    color: #ffffff;
 }
 
 .navbar-serach-box {
-    margin-left: 30px;
-    margin-top: 16px;
+    margin-left: 100px;
+    margin-top: 10px;
     width: 500px;
-    height: 40px;
-    border: 2px solid #f3f2cf;
+    height: 28px;
+    border-radius: 5px;
+    border: 1px solid #cacaca;
 }
 
 .search_input {
     float: left;
     width: 400px;
-    height: 38px;
+    height: 28px;
     outline: none;
     border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .search_button {
     float: left;
     width: 96px;
-    height: 40px;
+    height: 28px;
     color: white;
-    background-color: #f3f2cf;
+    background-color: #8a8a8a;
     border: none;
     outline: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
