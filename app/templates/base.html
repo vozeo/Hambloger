@@ -39,9 +39,6 @@
                 </div>
             </div>
         </div>
-
-
-
         <div class="main">
             {% if current_user.is_authenticated %}
             <div class="main-left-container">
@@ -70,4 +67,35 @@
             </div>
         </div>
     </div>
+    <div class="mouse-follow"></div>
+    <script>
+        let img = document.querySelector('.mouse-follow'),deg = 0,imgx = 0,imgy = 0,imgl = 0,imgt = 0,y = 0,index = 0
+        window.addEventListener('mousemove',function(xyz){
+            imgx = xyz.x - img.offsetLeft - img.clientWidth /2,imgy = xyz.y - img.offsetTop - img.clientHeight /2
+            deg = 360*Math.atan(imgy/imgx)/(2*Math.PI), index= 0
+            let x = event.clientX
+            if(img.offsetLeft<x){
+                y=-180
+            }else{
+                y=0
+            }
+        })
+        setInterval(()=>{
+            img.style.transform = "rotateZ("+deg+"deg) rotateY("+y+"deg)"
+            index++
+            if(index<50){
+                imgl+=imgx/50
+                imgt+=imgy/50
+            }
+            img.style.left = imgl+"px"
+            img.style.top = imgt+"px"
+        },10)
+    </script>
 </body>
+
+<footer>
+    <p>Copyright(C) 2021 by Group 7, CS10070902</p>
+    <p>小组成员(按字典序排序): 成笑行 陈奕澄 李博宇 庞浩天 王钧涛 张弛 朱泽凯</p>
+</footer>
+
+</html>
