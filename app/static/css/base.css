@@ -132,11 +132,14 @@ body {
 .navbar-right-box a:hover{
     background-color: rgb(87, 87, 87);
     color: #e6e9d4;
-.search_box {
+}
+
+.navbar-serach-box {
+    margin-left: 30px;
+    margin-top: 16px;
     width: 500px;
     height: 40px;
     border: 2px solid #f3f2cf;
-    margin: auto;
 }
 
 .search_input {
