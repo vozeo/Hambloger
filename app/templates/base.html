@@ -28,9 +28,13 @@
                 </div>
                 <div class="navbar-right-container">
                     <ul class="navbar-right-shell">
+                        {% if current_user.is_authenticated %}
+                        <li class="navbar-right-box"><a href="{{url_for('auth.logout')}}">登出</a></li>
                         <li class="navbar-right-box"><a href="/">个人主页</a></li>
-                        <li class="navbar-right-box"><a href="/">注册</a></li>
+                        {% else %}
+                        <li class="navbar-right-box"><a href="{{url_for('auth.register')}}">注册</a></li>
                         <li class="navbar-right-box"><a href="{{url_for('auth.login')}}">登录</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

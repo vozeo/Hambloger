@@ -26,7 +26,7 @@
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    line-height: 160px;
+    line-height: 100px;
 }
 
 .login-wrapper .form-wrapper .input-item {
@@ -50,6 +50,8 @@
   width: 100%;
   margin-top: 40px;
   background-image: linear-gradient(to right,#a6c1ee,#fbc2eb);
+  border: 0px;
+  font-size: 18px;
   color: #fff;
 }
 

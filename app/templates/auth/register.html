@@ -15,10 +15,14 @@
           </div>
       </div>
       <div class="form-wrapper">
-        <input type="text" name="username" placeholder="用户名" class="input-item">
-        <input type="password" name="password" placeholder="密码" class="input-item">
-        <input type="password" name="repeatpassword" placeholder="重复密码" class="input-item">
-        <div class="btn">提交</div>
+        <form method="POST">
+          {{ form.hidden_tag() }}
+          {{form.email(class="input-item",placeholder="电子邮件地址")}}
+          {{form.username(class="input-item",placeholder="用户名")}}
+          {{form.password(class="input-item",placeholder="密码")}}
+          {{form.password2(class="input-item",placeholder="确认密码")}}
+          {{form.submit(class="btn")}}
+        </form>
       </div>
       <div class="msg">
         <a href="#">快速注册</a>
