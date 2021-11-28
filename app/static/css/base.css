@@ -79,3 +79,28 @@ body {
     width: 60px;
     margin: 5px 0 0 5px;
 }
+
+.search_box {
+    width: 500px;
+    height: 40px;
+    border: 2px solid #f3f2cf;
+    margin: auto;
+}
+
+.search_input {
+    float: left;
+    width: 400px;
+    height: 38px;
+    outline: none;
+    border: none;
+}
+
+.search_button {
+    float: left;
+    width: 96px;
+    height: 40px;
+    color: white;
+    background-color: #f3f2cf;
+    border: none;
+    outline: none;
+}
