@@ -12,14 +12,20 @@
 </head>
 
 <body>
-    <div>
+    <div class="container">
        <div calss="navbar">
             <div class="navbar-container">
                 <div class="navbar-left-container">
+                    <img src="{{url_for('static', filename='icons/hambloger-logo.png')}}" class="logo">
                 </div>
                 <div class="navbar-middle-container">
                 </div>
                 <div class="navbar-right-container">
+                    <ul class="navbar-right-shell">
+                        <li class="navbar-right-box"><a href="/">个人主页</a></li>
+                        <li class="navbar-right-box"><a href="/">注册</a></li>
+                        <li class="navbar-right-box"><a href="/">登录</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

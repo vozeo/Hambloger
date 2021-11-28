@@ -1,8 +1,25 @@
 body {
-    background-color: rgb(252, 247, 237);
+    background-color: rgb(253, 250, 244);
 }
 
+.navbar-container {
+    background-color: rgb(248, 240, 228);
+    height: 80px;
+    display: grid;
+    grid-template-areas: 'left middle right';
+}
 
+.navbar-left-container {
+    grid-area: left;
+}
+
+.navbar-middle-container {
+    grid-area: middle;
+}
+
+.navbar-right-container {
+    grid-area: right;
+}
 
 .main {
     display: grid;
@@ -15,6 +32,13 @@ body {
 
 .main-middle-container {
     grid-area: middle-container;
+}
+
+.logo {
+    height: 80px;
+    width: 200px;
+    margin-top: 7px;
+    margin-left: 20px;
 }
 
 .sidebar {
@@ -78,4 +102,34 @@ body {
     height: 60px;
     width: 60px;
     margin: 5px 0 0 5px;
+}
+
+.navbar-right-container {
+
+}
+
+.navbar-right-shell {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 80px;
+}
+
+.navbar-right-box {
+    float: right;
+}
+
+.navbar-right-box a {
+    display: block;
+    color: #8a8a8a;
+    text-align: center;
+    padding: 28px 30px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.navbar-right-box a:hover{
+    background-color: rgb(87, 87, 87);
+    color: #e6e9d4;
 }
