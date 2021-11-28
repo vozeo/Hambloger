@@ -23,11 +23,11 @@ body {
 
 .main-left-container {
     float: left;
-    width: 95px;
+    width: 0px;
 }
 
 .main-left-container:hover {
-    width: 270px;
+    width: 0px;
 }
 
 .logo {
@@ -38,28 +38,23 @@ body {
 }
 
 .sidebar {
-    width: 95px;
-    height: 500px;
+    
+    width: 50px;
+    height: 184px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: rgb(250, 248, 239);
+    background-color: rgb(224, 224, 224);
     border-radius: 10px;
     transition: .3s;
     overflow: hidden;
-}
-
-.sidebar span {
-    position: relative;
-    top: 22px;
-    left: 80px;
-    font: 500 20px '';
-    opacity: 0;
-    transition: .1s;
+    
+    position: fixed;
+    top: 200px;
 }
 
 .sidebar:hover {
-    width: 270px;
+    width: 140px;
 }
 
 .sidebar:hover span {
@@ -68,9 +63,8 @@ body {
 
 .sidebar-box {
     display: block;
-    height: 15%;
-    width: 85%;
-    margin: 12px;
+    height: 25%;
+    width: 100%;
     border-radius: 5px;
     position: relative;
     transition: .3s;
@@ -78,26 +72,25 @@ body {
 }
 
 .sidebar-box:hover {
-    background-color: rgb(230, 233, 238);
+    background-color: rgb(241, 241, 241);
     color: rgb(241, 159, 159);
 }
 
 .sidebar-box span{
     color: #8a8a8a;
     position: relative;
-    top: 15px;
-    left: 80px;
-    font: 500 30px '';
+    top: 12px;
+    left: 52px;
+    font: 500 18px '';
     opacity: 0;
     transition: .1s;
 }
 
 .sidebar-img {
-    font-size: 60px;
+    margin: 8px;
     position: absolute;
-    height: 60px;
-    width: 60px;
-    margin: 5px 0 0 5px;
+    height: 32px;
+    width: 32px;
 }
 
 .navbar-right-shell {

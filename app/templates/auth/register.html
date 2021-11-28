@@ -18,15 +18,24 @@
         <form method="POST">
           {{ form.hidden_tag() }}
           {{form.email(class="input-item",placeholder="电子邮件地址")}}
+          {% for err in form.email.errors %}
+            <p class="form-errmsg">{{err}}</p>
+          {% endfor %}
           {{form.username(class="input-item",placeholder="用户名")}}
+          {% for err in form.username.errors %}
+            <p class="form-errmsg">{{err}}</p>
+          {% endfor %}
           {{form.password(class="input-item",placeholder="密码")}}
+          {% for err in form.password.errors %}
+            <p class="form-errmsg">{{err}}</p>
+          {% endfor %}
           {{form.password2(class="input-item",placeholder="确认密码")}}
           {{form.submit(class="btn")}}
         </form>
       </div>
-      <div class="msg">
-        <a href="#">快速注册</a>
-        <a href="#">找回密码</a>
+      <div class="msg-register">
+        <span>已有账号?</span>
+        <span><a href="{{url_for('auth.login')}}">立即登录</a></span>
       </div>
     </div>
   </div>

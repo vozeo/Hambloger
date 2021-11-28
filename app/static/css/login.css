@@ -1,5 +1,5 @@
 .login-container {
-  height: 650px;
+  height: 750px;
   background-image: linear-gradient(to right,#fbc2eb,#a6c1ee);
 }
 
@@ -67,4 +67,24 @@
   margin-right: 30px;
   text-decoration-line: none;
   color: #a6c1ee;
+}
+
+.login-wrapper .msg-register {
+    display: block;
+    grid-template-areas: 'left right';
+    text-align: center;
+    line-height: 50px;
+  }
+  
+  .login-wrapper .msg-register a {
+    margin-left: 10px;
+    text-decoration-line: none;
+    color: #a6c1ee;
+  }
+
+.form-errmsg {
+    font-size: 8px;
+    margin-top: -15px;
+    margin-left: 8px;
+    color:rgb(255, 0, 0);
 }
