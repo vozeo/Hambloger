@@ -1,54 +1,53 @@
-{% extends "bootstrap/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Hambloger{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icons/ham2.png') }}"
+        type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='icons/ham2.png') }}"
+        type="image/x-icon">
+    <link href="{{ url_for('static',filename='css/base.css') }}" rel="stylesheet">
+    <title> {% block title %}Hambloger{% endblock %}</title>
+</head>
 
-{% block head %}
-{{ super() }}
-<link rel="shortcut icon" href="{{ url_for('static', filename='icons/ham2.png') }}"
-    type="image/x-icon">
-<link rel="icon" href="{{ url_for('static', filename='icons/ham2.png') }}"
-    type="image/x-icon">
-{% endblock %}
-
-{% block navbar %}
-<div calss="navbar navbar-inverse" role="navigation">
-    <div calss="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle"
-            data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Hambloger</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">我的关注</a></li>
-                <li><a href="/">我的文章</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.logout') }}">登出</a></li>
-                {% else %}
-                <li><a href="{{ url_for('auth.login') }}">登录</a></li>
-                {% endif %}
-            </ul>
+<body>
+    <div>
+       <div calss="navbar">
+            <div class="navbar-container">
+                <div class="navbar-left-container">
+                </div>
+                <div class="navbar-middle-container">
+                </div>
+                <div class="navbar-right-container">
+                </div>
             </div>
-    </div>
-</div>
-{% endblock %}
-
-{% block content %}
-<div class="container">
-    {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
-    </div>
-    {% endfor %}
+        </div>
     
-    {% block page_content %}{% endblock %}
-</div>
-{% endblock %}
+        <div class="main">
+            <div class="main-left-container">
+                <div class="sidebar">
+                    <a class="sidebar-box" href="/">
+                        <img src="{{ url_for('static', filename='icons/sidebar-write.png') }} " class="sidebar-img">
+                        <span>发表文章</span>
+                    </a>
+                    <a class="sidebar-box" href="/">
+                        <img src="{{ url_for('static', filename='icons/sidebar-paper.png') }}" class="sidebar-img">
+                        <span>我的文章</span>
+                    </a> 
+                    <a class="sidebar-box" href="/">
+                        <img src="{{ url_for('static', filename='icons/sidebar-star.png') }}" class="sidebar-img">
+                        <span>我的关注</span>
+                    </a>
+                    <a class="sidebar-box" href="/">
+                        <img src="{{ url_for('static', filename='icons/sidebar-like.png') }}" class="sidebar-img">
+                        <span>我的收藏</span>
+                    </a>
+                </div>
+            </div>
+            <div class="main-middle-container">
+                {% block page_content %}  {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
