@@ -3,8 +3,10 @@
 {% block title %}Hambloger - Page Not Found{% endblock %}
 
 {% block page_content %}
-<div class="page-content">
+<div class="error-404">
     <a href="/"><img src="{{url_for('static', filename='icons/404-background.png')}}" class="error-image"></a>
     <input type="button" name="Submit" class="error-button" value="返回上一页" onclick="javascript:window.history.back(-1);">
+    <br>
+
 </div>
 {% endblock %}

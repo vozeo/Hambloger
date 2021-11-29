@@ -226,16 +226,22 @@ footer {
 }
 .search-click:hover {
     background-color: rgb(245, 243, 240);
+}
+
+.error-404 {
+    height: 100%;
+}
+
 .error-image {
     height: 256px;
-    width: 256px;
-    margin-top: 40px;
-    margin-left: 500px;
+    width: 30%;
+    position: relative;
+    top: 50px;
+    left: 35%;
 }
 
 .error-button {
-    margin-top: 30px;
-    margin-left: 560px;
+    margin-top: 60px;
     display: block;
     color: #8a8a8a;
     text-align: center;
@@ -243,6 +249,9 @@ footer {
     font-size: 16px;
     border-radius: 10px;
     text-decoration: none;
+    width: 12%;
+    position: relative;
+    left: 44%;
 }
 
 .error-button:hover {
