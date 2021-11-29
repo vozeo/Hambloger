@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markdown Editor</title>
+    <script type="text/javascript" src="/static/showdown/dist/showdown.min.js"></script>
+    <link rel="stylesheet" href="/static/editor.css">
+</head>
+
+<body>
+    <div class="markdown_class">
+        <div class="markdown_title">
+            <h1>Markdown Editor</h1>
+        </div>
+        <div class="markdown_input">
+            <label for="markdown_input"></label>
+            <textarea id="markdown_input" onkeyup="show()"></textarea>
+        </div>
+        <div class="markdown_output" id="markdown_output">
+        </div>
+    </div>
+    <script type="text/javascript">
+        function show() {
+            const text = document.getElementById("markdown_input").value;
+            const converter = new showdown.Converter();
+            document.getElementById("markdown_output").innerHTML = converter.makeHtml(text);
+        }
+    </script>
+</body>
+
+</html>
