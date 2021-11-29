@@ -21,9 +21,11 @@
                     <a href="/"><img src="{{url_for('static', filename='icons/hambloger-logo.png')}}" class="logo"></a>
                 </div>
                 <div class="navbar-middle-container">
-                    <div class="navbar-serach-box">
-                        <input type="text" class="search_input" placeholder="请输入关键词">
-                        <input type="button" value="搜索" class="search_button">
+                    <div class="search-box-container">
+                        <input type="text" class="search-input">
+                        <a href="#" class="search-click">
+                            <img src="{{url_for('static', filename='icons/search.png')}}" style="width: 30px;">
+                        </a>
                     </div>
                 </div>
                 <div class="navbar-right-container">
@@ -84,8 +86,8 @@
             img.style.transform = "rotateZ("+deg+"deg) rotateY("+y+"deg)"
             index++
             if(index<50){
-                imgl+=imgx/50
-                imgt+=imgy/50
+                imgl+=imgx/100
+                imgt+=imgy/100
             }
             img.style.left = imgl+"px"
             img.style.top = imgt+"px"
