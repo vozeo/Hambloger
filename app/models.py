@@ -1,6 +1,7 @@
+import hashlib
 from app import db
 from datetime import datetime
-from flask import current_app
+from flask import current_app, request
 from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import login_manager
@@ -88,6 +89,8 @@ class User(UserMixin, db.Model):
                 self.role = Role.query.filter_by(name='Administrator').first()
             if self.role is None:
                 self.role = Role.query.filter_by(default=True).first()
+            if self.email is not None and self.avatar_hash is None:
+                self.avatar_hash = self.gravatar_hash()
 
     @property
     def password(self):
