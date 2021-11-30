@@ -3,7 +3,8 @@
 {% block title %}Hambloger - Internal Server Error{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <h1><div align="center">Internal Server Error</div></h1>
+<div class="error-404">
+    <a href="/"><img src="{{url_for('static', filename='icons/500-background.png')}}" class="error-image"></a>
+    <input type="button" name="Submit" class="error-button" value="返回上一页" onclick="javascript:window.history.back(-1);">
 </div>
 {% endblock %}

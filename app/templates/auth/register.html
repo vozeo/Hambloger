@@ -1,13 +1,42 @@
 {% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Hambloger-注册{% endblock %}
+{% block head %}
+  <link href="{{ url_for('static',filename='css/login.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Hambloger - 登录{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <hl>注册</hl>
-</div>
-<div class="col-md-4">
-    {{ wtf.quick_form(form) }}
-</div>
+  <div class="login-container">
+    <div class="login-wrapper">
+      <div class="head-container">
+          <div class="header-register">
+              <span>注册</span>
+          </div>
+      </div>
+      <div class="form-wrapper">
+        <form method="POST">
+          {{ form.hidden_tag() }}
+          {{form.email(class="input-item",placeholder="电子邮件地址")}}
+          {% for err in form.email.errors %}
+            <p class="form-errmsg">{{err}}</p>
+          {% endfor %}
+          {{form.username(class="input-item",placeholder="用户名")}}
+          {% for err in form.username.errors %}
+            <p class="form-errmsg">{{err}}</p>
+          {% endfor %}
+          {{form.password(class="input-item",placeholder="密码")}}
+          {% for err in form.password.errors %}
+            <p class="form-errmsg">{{err}}</p>
+          {% endfor %}
+          {{form.password2(class="input-item",placeholder="确认密码")}}
+          {{form.submit(class="btn")}}
+        </form>
+      </div>
+      <div class="msg-register">
+        <span>已有账号?</span>
+        <span><a href="{{url_for('auth.login')}}">立即登录</a></span>
+      </div>
+    </div>
+  </div>
 {% endblock %}
