@@ -1,9 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Hambloger{% endblock %}
+{% block title %}Hambloger - {{ user.username }}{% endblock %}
 
 {% block page_content %}
 <div class="page-header">
-    <h1><div align="center">Hello, {{ name }}</div></h1>
+    <h1><div align="center">{{ user.username }}</div></h1>
+    {% if user.name or user.location %}
+    <p>
+        {% if user.name %}{{ user.name }}{% endif %}
+        {% if user.location %}
+            来自 <a href="https://maps.google.com/?q={{ user.location }}">
+                {{ user.location }}
+            </a>
+        {% endif %}
+    </p>
+    {% endif %}
+    {% if current_user.is_administrator() %}
+    <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+    {% endif %}
+    {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+    <p>
+        我们于 {{ moment(user.member_since).format('L') }} 首次见面。<br>
+        上次登录于 {{ moment(user.last_seen).fromNow() }} 。
+    </p>
 </div>
 {% endblock %}
