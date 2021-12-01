@@ -88,3 +88,11 @@
     margin-left: 8px;
     color:rgb(255, 0, 0);
 }
+
+.flash-errmsg {
+    font-size: 15px;
+    height: 0px;
+    margin-top: -5px;
+    margin-left: 28px;
+    color:rgb(255, 0, 0);
+}
