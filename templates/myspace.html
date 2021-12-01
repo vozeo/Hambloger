@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <h>
+        {{ nickname }} (id:{{userid }})
+    </h>
+
+    <p>
+        {% if userid %}
+            <img width="100" height="100" alt="avatar" src= {{ get_user_avatar(userid) }} >
+        {% else %}
+            <img width="100" height="100" alt="avatar" src= {{ get_user_avatar(None) }} >
+        {% endif %}
+    </p>
+
+
+    {% if session.userid and userid !=  session.userid %}
+        <form action="/follow" method="post">
+            <input name="returl" value="/followlist?userid={{ session.userid }}" type="hidden">
+            <input name="whofollow" value={{ session.userid }} type="hidden">
+            <input name="followwho" value={{ userid }} type="hidden">
+            <input type="submit", value="Follow">
+        </form>
+        <form action="/unfollow" method="post">
+            <input name="returl" value="/followlist?userid={{ session.userid }}" type="hidden">
+            <input name="whofollow" value={{ session.userid }} type="hidden">
+            <input name="followwho" value={{ userid }} type="hidden">
+            <input type="submit", value="Unollow">
+        </form>
+    {% else %}
+        <a href="/followlist?userid={{ userid }}"> (following) </a>
+    {% endif %}
+
+
+    <br>
+    <br>
+    <br>
+
+    <h>
+        Works
+    </h>
+    {% for work in worklist %}
+        <p>
+            <a href={{ get_work_img(work[0]) }}>
+                <img width="300" alt={{ work[0] }} src= {{ get_work_img(work[0]) }} >
+                <br>
+                {{ work[1] }}
+            </a>
+            <br>
+        </p>
+        <br>
+        <br>
+    {% endfor %}
+
+{% endblock %}

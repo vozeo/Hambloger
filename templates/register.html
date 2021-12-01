@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block ordinary %}
+    <p> Userid: a number with one to eight digits </p>
+    <p> Passwd: a piece of text </p>
+    <p> Regkey: o7 </p>
+    <form action="/register" method="post">
+        <input autocomplete="off" autofocus name="userid" placeholder="Userid" type="text">
+        <input autocomplete="off" autofocus name="passwd" placeholder="Passwd" type="password">
+        <input autocomplete="off" autofocus name="regkey" placeholder="Regkey" type="password">
+        <input type="submit" value="register">
+    </form>
+
+
+
+{% endblock %}

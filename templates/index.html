@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <p>
+        {% if session.userid %}
+            <img width="100" width="100" alt="avatar" src= {{ get_user_avatar(session.userid) }} >
+        {% else %}
+            <img width="100" width="100" alt="avatar" src= {{ get_user_avatar(None) }} >
+        {% endif %}
+    </p>
+
+{% endblock %}

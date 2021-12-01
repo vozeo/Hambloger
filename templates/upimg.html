@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block ordinary %}
+    <h1>Upload an image</h1>
+    <form method="post" action="/api/upload_image" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <br>
+        <input type="text" name="fname" placeholder="image title">
+        <input type="submit">
+
+    </form>
+
+{% endblock %}

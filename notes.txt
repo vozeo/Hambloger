@@ -1,0 +1,123 @@
+//20211201
+database {
+
+    users {
+        userid
+        nickname
+        level
+        (passwd)
+    }
+
+    works {
+        workid
+        workname
+        authorid
+        rank
+        ext
+    }
+
+    follows {
+        whofollow
+        followwho
+    }
+
+    commands {
+        commandid
+        authorid
+        workid
+    }
+
+    likes {
+        workid
+        likerid
+    }
+
+    tags {
+        workid
+        tagname
+    }
+}
+
+
+//20211119=================================================================
+
+
+images {
+    avatar_userid_xxxx  .jpg
+    work_workid_xxxx    .jpg|.png
+
+    avatar_default      .jpg
+}
+
+texts {
+    command_commandid_xxxx      .txt
+    introduction_workid_xxxx    .txt
+    introduction_userid_xxxx    .txt
+}
+
+
+
+default user {
+    userid:     0
+    nickname:   hehepig
+    level:      0
+    passwd:     hehe
+}
+
+index.html
+
+注：id 位数统一规定小于9位
+
+database {
+
+    users {
+        userid
+        nickname
+        level
+        (passwd)
+    }
+
+    works {
+        workid
+        workname
+        authorid
+        rank
+        ext
+    }
+
+    commands {
+        commandid
+        authorid
+        workid
+    }
+
+    likes {
+        workid
+        likerid
+    }
+
+    tags {
+        workid
+        tagname
+    }
+}
+
+
+
+//===============================================================================
+// 语法
+//===============================================================================
+
+-----------------------20211119------------
+可：    row = db.execute("SELECT passwd FROM users WHERE userid = ?", [userid])
+不可：  row = db.execute("SELECT passwd FROM users WHERE userid = ?", (userid))
+原因：  [userid] 是一个东西，userid 是一串东西 ?
+
+
+可：    if session.get("userid") != None:
+不可：  if session["userid"] != None:
+原因：  因为可能没有key userid
+
+
+db = sqlite3.connect('heheblog.db', check_same_thread=False)
+

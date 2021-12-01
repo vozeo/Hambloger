@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block ordinary %}
+    <h1>User List</h1>
+    <l>
+        {% for item in userlist %}
+            <li>
+                <a href="/space?userid={{ item[0] }}">{{ item }}</a>
+            </li>
+        {% endfor %}
+    </l>
+    
+{% endblock %}

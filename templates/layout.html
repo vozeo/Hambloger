@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>heheblog</title>
+    </head>
+
+    
+    <p align="right">
+        {% if session.userid %}
+            You are logged in as user_{{ session.userid}} 
+        {% else %}
+            You are not logged in.
+        {% endif %}
+
+        {% if session.userid %}
+            <a href="/myspace">(myspace)</a>
+            <a href="/logout">(Log out)</a>
+        {% else %}
+            <a href="/login">(Log in)</a>
+        {% endif %}
+        <a href="/register">(register)</a>
+    </p>
+
+
+
+    <body align="center">
+        {% block body %}{% endblock %}
+    </body>
+    
+    <ordinary align="left">
+        {% block ordinary %} {% endblock %}
+    </ordinary>
+
+    <br>
+    <br>
+    <br>
+
+    <p align="center">
+        <a href="/userlist">(userlist)</a>    
+        <a href="/settings">(settings)</a>
+        <a href="/upload_image">(upload an image)</a>
+    </p>
+    <br>
+    <p align="center">
+        <a href="/">&#128517;return to home</a>
+    </p>
+</html>

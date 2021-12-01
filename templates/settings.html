@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block ordinary %}
+    <h1>Settings</h1>
+
+    <form action="/settings/confirmavatar" method="post" enctype="multipart/form-data">
+        <p>
+        <img width="100" width="100" alt="avatar" src= {{ get_user_avatar(userid) }} >
+        <input type="file" name="newimage">
+        <br>
+        <input type="submit" value="upload avatar">
+        </p>
+    </form>
+
+    <br>
+    <br>
+
+    <form action="/settings/confirm" method="post" >
+        <p>
+            userid:     <input type="text" value={{userid}} name="userid" readonly>
+        </p>
+
+        <p>
+            nickname:   <input type="text" value={{nickname}} name="nickname">
+        </p>
+
+
+        <p>
+            Oldpasswd:  <input type="password" name="oldpasswd" placeholder="Oldpasswd">
+        </p>
+
+        <p>
+            Newpasswd:  <input type="password" name="newpasswd" placeholder="Newpasswd">
+        </p>
+
+        <p>
+            Confirm:    <input type="password" name="confirmpasswd" placeholder="Confirmpasswd">
+        </p>
+
+        <p>
+            <input type="submit">
+        </p>
+    </form>
+
+
+{% endblock %}

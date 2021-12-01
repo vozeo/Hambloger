@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <form action="/login" method="post">
+        <input autocomplete="off" autofocus name="userid" placeholder="Userid" type="text">
+        <input autocomplete="off" autofocus name="passwd" placeholder="Passwd" type="password">
+        <input type="submit">
+    </form>
+
+    
+
+{% endblock %}
