@@ -12,3 +12,7 @@ class EditProfileForm(FlaskForm):
     location = StringField('地址', validators=[Length(0, 64)])
     about_me = TextAreaField('个人简介')
     submit = SubmitField('提交')
+
+class PostForm(FlaskForm):
+    body = TextAreaField("想写什么？", validators=[DataRequired()])
+    submit = SubmitField('写完了')

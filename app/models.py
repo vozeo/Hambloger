@@ -88,7 +88,7 @@ class User(UserMixin, db.Model):
             if self.email == current_app.config['HAMBLOGER_ADMIN']:
                 self.role = Role.query.filter_by(name='Administrator').first()
             if self.role is None:
-                self.role = Role.query.filter_by(default=True).first()
+                self.role = Role.query.filter_by(name='User').first()
 
     @property
     def password(self):
@@ -131,10 +131,10 @@ login_manager.anonymous_user = AnonymousUser
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-#定义文章模型
+#定义博客文章模型
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
