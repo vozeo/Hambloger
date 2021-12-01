@@ -1,0 +1,104 @@
+.page-container {
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+}
+
+.user-container {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    margin-top: 12px;
+    height: 260px;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+    border-radius: 2px;
+}
+
+.user-cover-container {
+    background-color: rgb(153,153,153);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    height: 50%;
+}
+
+.user-profile-container {
+    height: 50%;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.user-mask-container {
+    float: left;
+    position: relative;
+    top: -50%;
+    left: 5%;
+    width: 160px;
+    height: 160px;
+}
+
+.user-mask {
+    background-color: rgb(255, 255, 255);
+    width: 160px;
+    height: 160px;
+    box-shadow: 10px 5px 5px rgba(18,18,18,.1);
+    border-radius: 4px;
+}
+
+.user-mask-img {
+    margin: 2%;
+    width: 96%;
+    height: 96%;
+    border-radius: 4px;
+}
+
+.user-information-container {
+    float: left;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+
+.username {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.about_me {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.user-operation-container {
+    margin-top: 70px;
+    float: right;
+}
+  
+.user-operation-container button {
+    margin-right: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 3px;
+}
+  
+.grey-button {
+    background-color: #8590a6;
+}
+
+.edit-profile-button {
+    color: #06f;
+    border-color: #06f;
+}
+
+.follow-button {
+    color: rgb(252, 252, 252);
+    background-color: #8590a6;
+    border-color: #8590a6;
+}
+
+.non-follow-button {
+    color: rgb(252, 252, 252);
+    background-color: #06f;
+}

@@ -1,0 +1,273 @@
+body {
+    background-color: rgb(246,246,246);
+    margin: 0px;
+    padding: 0px;
+}
+
+div {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+.navbar-container {
+    background-color: rgb(9,7,35);
+    height: 50px;
+    display: grid;
+    grid-template-areas: 'left middle right';
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+
+.navbar-left-container {
+    grid-area: left;
+}
+
+.navbar-middle-container {
+    grid-area: middle;
+}
+
+.navbar-right-container {
+    grid-area: right;
+}
+
+.main-left-container {
+    float: left;
+    width: 0px;
+}
+
+.main-left-container:hover {
+    width: 0px;
+}
+
+.logo {
+    height: 45px;
+    width: 160px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.container {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+.navbar {
+    position: relative;
+    top: -5px;
+    left: -5px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+.sidebar {
+    
+    width: 50px;
+    height: 184px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(224, 224, 224);
+    border-radius: 10px;
+    transition: .3s;
+    overflow: hidden;
+    
+    position: fixed;
+    top: 200px;
+}
+
+.sidebar:hover {
+    width: 140px;
+}
+
+.sidebar:hover span {
+    opacity: 1;
+}
+
+.sidebar-box {
+    display: block;
+    height: 25%;
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.sidebar-box:hover {
+    background-color: rgb(241, 241, 241);
+    color: rgb(241, 159, 159);
+}
+
+.sidebar-box span{
+    color: #8a8a8a;
+    position: relative;
+    top: 12px;
+    left: 52px;
+    font: 500 18px '';
+    opacity: 0;
+    transition: .1s;
+}
+
+.sidebar-img {
+    margin: 8px;
+    position: absolute;
+    height: 32px;
+    width: 32px;
+}
+
+.navbar-right-shell {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 50px;
+}
+
+.navbar-right-box {
+    float: right;
+}
+
+.navbar-right-box a {
+    display: block;
+    color: #8a8a8a;
+    text-align: center;
+    padding: 14px 26px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.navbar-right-box a:hover{
+    color: #ffffff;
+}
+
+.navbar-serach-box {
+    margin-left: 100px;
+    margin-top: 10px;
+    width: 500px;
+    height: 28px;
+    border-radius: 5px;
+    border: 1px solid #cacaca;
+}
+
+.search_input {
+    float: left;
+    width: 400px;
+    height: 28px;
+    outline: none;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.search_button {
+    float: left;
+    width: 100px;
+    height: 28px;
+    color: white;
+    background-color: #8a8a8a;
+    border: none;
+    outline: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin: 0px;
+    padding: 0px;
+}
+
+footer {
+    text-align: center;
+}
+
+.mouse-follow {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-image: url('../icons/goat.gif');
+    background-size: cover;
+} 
+
+.navbar-middle-container {
+    margin-left: 110px;
+}
+
+.search-box-container{
+    background-color: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    margin: 5px;
+    width: 300px;
+    
+}
+
+
+.search-input {
+    border: none;
+    background: none;
+    /* 取消选中搜索框时的外边框 */
+    outline: none;
+    margin-left: 30px;
+    width: 220px;
+    padding: 0;
+    transition: .4s;
+    line-height: 40px;
+    font-size: 20px;
+    color: wheat;
+}
+.search-click{
+    color: #e94118;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+    background-color: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .4s;
+}
+.search-click:hover {
+    background-color: rgb(245, 243, 240);
+}
+
+.error-404 {
+    height: 100%;
+}
+
+.error-image {
+    height: 256px;
+    width: 30%;
+    position: relative;
+    top: 50px;
+    left: 35%;
+}
+
+.error-button {
+    margin-top: 60px;
+    display: block;
+    color: #8a8a8a;
+    text-align: center;
+    padding: 14px 26px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    width: 12%;
+    position: relative;
+    left: 44%;
+}
+
+.error-button:hover {
+    color: #ffffff;
+}
+
+.page-container {
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+}
