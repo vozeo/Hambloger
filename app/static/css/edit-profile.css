@@ -9,7 +9,6 @@
     display: block;
     background-color: rgb(255, 255, 255);
     margin-top: 12px;
-    height: 260px;
     box-shadow: 0 1px 3px rgba(18,18,18,.1);
     border-radius: 2px;
 }
@@ -18,11 +17,11 @@
     background-color: rgb(153,153,153);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
-    height: 50%;
+    height: 200px;
 }
 
 .user-profile-container {
-    height: 50%;
+    height: 300px;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 }
@@ -30,7 +29,7 @@
 .user-mask-container {
     float: left;
     position: relative;
-    top: -50%;
+    top: -20px;
     left: 5%;
     width: 160px;
     height: 160px;
@@ -53,26 +52,12 @@
 
 .user-information-container {
     float: left;
+    margin-top: 25px;
+    margin-left: 120px;
+}
+
+.btn {
     margin-top: 10px;
-    margin-left: 80px;
-}
-
-.username {
-    font-size: 32px;
-    font-weight: 900;
-}
-
-.about_me {
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.user-operation-container {
-    margin-top: 70px;
-    float: right;
-}
-  
-.user-operation-container button {
     margin-right: 40px;
     padding: 0 16px;
     font-size: 14px;
@@ -81,24 +66,33 @@
     cursor: pointer;
     border: 1px solid;
     border-radius: 3px;
-}
-  
-.grey-button {
-    background-color: #8590a6;
-}
-
-.edit-profile-button {
-    color: #06f;
-    border-color: #06f;
-}
-
-.follow-button {
-    color: rgb(252, 252, 252);
-    background-color: #8590a6;
-    border-color: #8590a6;
-}
-
-.non-follow-button {
     color: rgb(252, 252, 252);
     background-color: #06f;
+}
+
+.input-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 0;
+    padding: 10px;
+    border-bottom: 1px solid rgb(128, 125, 125);
+    font-size: 15px;
+    outline: none;
+}
+
+.input-item-text {
+    display: block;
+    width: 200%;
+    margin-bottom: 20px;
+    border: 0;
+    padding: 10px;
+    border-bottom: 1px solid rgb(128, 125, 125);
+    font-size: 15px;
+    font: 900;
+    outline: none;
+}
+
+.input-item::placeholder {
+    text-transform: uppercase;
 }
