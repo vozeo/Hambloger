@@ -10,7 +10,7 @@ class NameForm(FlaskForm):
 class EditProfileForm(FlaskForm):
     name = StringField('真实姓名', validators=[Length(0, 64)])
     location = StringField('地址', validators=[Length(0, 64)])
-    about_me = TextAreaField('个人简介')
+    about_me = StringField('个人简介', validators=[Length(0, 64)])
     submit = SubmitField('提交')
 
 class PostForm(FlaskForm):
