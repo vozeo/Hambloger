@@ -1,13 +1,36 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+{% block head %}
+  <link href="{{ url_for('static',filename='css/edit-profile.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block title %}Hambloger - 编辑个人资料{% endblock %}
 
 {% block page_content %}
-<div class="page-header"><div align="center">
-    <h1>编辑个人资料</h1>
-</div></div>
-<div class="col-md-4"><div align="center">
-    {{ wtf.quick_form(form) }}
-</div></div>
+<div class="page-container">
+    <div class="user-container">
+        <div class="user-cover-container">
+            
+        </div>
+        <div class="user-profile-container">
+            <div class="user-mask-container">
+                <div class="user-mask">
+                    <img src="{{url_for('static', filename='mask/test-1.jpeg')}}" class="user-mask-img">
+                </div>
+            </div>
+            <div class="user-information-container">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    {{form.name(class="input-item", placeholder="修改昵称")}}
+                    {{form.location(class="input-item",placeholder="修改地址")}}
+                    {{form.about_me(class="input-item-text",placeholder="修改个人简介")}}
+                    {{form.submit(class="btn")}}
+                </form>
+            </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

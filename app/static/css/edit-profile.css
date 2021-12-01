@@ -1,0 +1,98 @@
+.page-container {
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+}
+
+.user-container {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    margin-top: 12px;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+    border-radius: 2px;
+}
+
+.user-cover-container {
+    background-color: rgb(153,153,153);
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    height: 200px;
+}
+
+.user-profile-container {
+    height: 300px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.user-mask-container {
+    float: left;
+    position: relative;
+    top: -20px;
+    left: 5%;
+    width: 160px;
+    height: 160px;
+}
+
+.user-mask {
+    background-color: rgb(255, 255, 255);
+    width: 160px;
+    height: 160px;
+    box-shadow: 10px 5px 5px rgba(18,18,18,.1);
+    border-radius: 4px;
+}
+
+.user-mask-img {
+    margin: 2%;
+    width: 96%;
+    height: 96%;
+    border-radius: 4px;
+}
+
+.user-information-container {
+    float: left;
+    margin-top: 25px;
+    margin-left: 120px;
+}
+
+.btn {
+    margin-top: 10px;
+    margin-right: 40px;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 3px;
+    color: rgb(252, 252, 252);
+    background-color: #06f;
+}
+
+.input-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 0;
+    padding: 10px;
+    border-bottom: 1px solid rgb(128, 125, 125);
+    font-size: 15px;
+    outline: none;
+}
+
+.input-item-text {
+    display: block;
+    width: 200%;
+    margin-bottom: 20px;
+    border: 0;
+    padding: 10px;
+    border-bottom: 1px solid rgb(128, 125, 125);
+    font-size: 15px;
+    font: 900;
+    outline: none;
+}
+
+.input-item::placeholder {
+    text-transform: uppercase;
+}

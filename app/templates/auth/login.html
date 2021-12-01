@@ -18,12 +18,9 @@
         <form method="POST">
             {{ form.hidden_tag() }}
             {{form.email(class="input-item",placeholder="电子邮件地址")}}
-            {% for err in form.email.errors %}
-                <p class="form-errmsg">{{err}}</p>
-            {% endfor %}
             {{form.password(class="input-item",placeholder="密码")}}
-            {% for err in form.password.errors %}
-                <p class="form-errmsg">{{err}}</p>
+            {% for message in get_flashed_messages() %}
+              <p class="form-errmsg">{{message}}</p>
             {% endfor %}
             {{form.submit(class="btn")}}
         </form>

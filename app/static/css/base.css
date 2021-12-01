@@ -1,7 +1,13 @@
 body {
-    background-color: rgb(253, 250, 244);
+    background-color: rgb(246,246,246);
     margin: 0px;
     padding: 0px;
+}
+
+div {
+    margin: 0px;
+    padding: 0px;
+    display: block;
 }
 
 .navbar-container {
@@ -9,6 +15,7 @@ body {
     height: 50px;
     display: grid;
     grid-template-areas: 'left middle right';
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
 }
 
 .navbar-left-container {
@@ -256,4 +263,11 @@ footer {
 
 .error-button:hover {
     color: #ffffff;
+}
+
+.page-container {
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
 }
