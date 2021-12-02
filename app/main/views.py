@@ -6,8 +6,9 @@ from .forms import EditProfileForm, NameForm, PostForm
 from .. import db
 from ..models import Permission, User, Post
 
-#@main.route('/', methods=['GET', 'POST'])
-#def index():
+
+# @main.route('/', methods=['GET', 'POST'])
+# def index():
 #    form = NameForm()
 #    if form.validate_on_submit():
 #        user = User.query.filter_by(username=form.name.data).first() #查询是否存在用户
@@ -34,6 +35,7 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('user.html', user=user)
 
+
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -50,6 +52,7 @@ def edit_profile():
     form.location.data = current_user.location
     form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', form=form)
+
 
 @main.route('/', methods=['GET', 'POST'])
 def index():

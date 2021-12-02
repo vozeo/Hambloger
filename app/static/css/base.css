@@ -1,21 +1,21 @@
 body {
-    background-color: rgb(246,246,246);
-    margin: 0px;
-    padding: 0px;
+    background-color: rgb(246, 246, 246);
+    margin: 0;
+    padding: 0;
 }
 
 div {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     display: block;
 }
 
 .navbar-container {
-    background-color: rgb(9,7,35);
+    background-color: rgb(9, 7, 35);
     height: 50px;
     display: grid;
     grid-template-areas: 'left middle right';
-    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+    box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
 }
 
 .navbar-left-container {
@@ -32,11 +32,11 @@ div {
 
 .main-left-container {
     float: left;
-    width: 0px;
+    width: 0;
 }
 
 .main-left-container:hover {
-    width: 0px;
+    width: 0;
 }
 
 .logo {
@@ -48,8 +48,8 @@ div {
 
 .container {
     width: 100%;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     display: block;
 }
 
@@ -58,13 +58,13 @@ div {
     top: -5px;
     left: -5px;
     width: 100%;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     display: block;
 }
 
 .sidebar {
-    
+
     width: 50px;
     height: 184px;
     display: flex;
@@ -74,7 +74,7 @@ div {
     border-radius: 10px;
     transition: .3s;
     overflow: hidden;
-    
+
     position: fixed;
     top: 200px;
 }
@@ -102,7 +102,7 @@ div {
     color: rgb(241, 159, 159);
 }
 
-.sidebar-box span{
+.sidebar-box span {
     color: #8a8a8a;
     position: relative;
     top: 12px;
@@ -140,7 +140,7 @@ div {
     text-decoration: none;
 }
 
-.navbar-right-box a:hover{
+.navbar-right-box a:hover {
     color: #ffffff;
 }
 
@@ -161,8 +161,8 @@ div {
     border: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .search_button {
@@ -175,8 +175,8 @@ div {
     outline: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 footer {
@@ -189,19 +189,19 @@ footer {
     position: absolute;
     background-image: url('../icons/goat.gif');
     background-size: cover;
-} 
+}
 
 .navbar-middle-container {
     margin-left: 110px;
 }
 
-.search-box-container{
+.search-box-container {
     background-color: #2f3640;
     height: 40px;
     border-radius: 40px;
     margin: 5px;
     width: 300px;
-    
+
 }
 
 
@@ -218,7 +218,8 @@ footer {
     font-size: 20px;
     color: wheat;
 }
-.search-click{
+
+.search-click {
     color: #e94118;
     float: right;
     width: 40px;
@@ -231,6 +232,7 @@ footer {
     align-items: center;
     transition: .4s;
 }
+
 .search-click:hover {
     background-color: rgb(245, 243, 240);
 }
