@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link href="{{ url_for('static',filename='css/login.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Hambloger - 登录{% endblock %}
+
+{% block page_content %}
+  <div class="login-container">
+    <div class="login-wrapper">
+      <div class="head-container">
+          <div class="header">
+              <span>登录</span>
+          </div>
+      </div>
+      <div class="form-wrapper">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{form.email(class="input-item",placeholder="电子邮件地址")}}
+            {{form.password(class="input-item",placeholder="密码")}}
+            {% for message in get_flashed_messages() %}
+              <p class="form-errmsg">{{message}}</p>
+            {% endfor %}
+            {{form.submit(class="btn")}}
+        </form>
+      </div>
+      <div class="msg">
+        <a href="{{url_for('auth.register')}}">快速注册</a>
+        <a href="#">找回密码</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
