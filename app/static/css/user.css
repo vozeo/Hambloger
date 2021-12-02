@@ -10,12 +10,12 @@
     background-color: rgb(255, 255, 255);
     margin-top: 12px;
     height: 260px;
-    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+    box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
     border-radius: 2px;
 }
 
 .user-cover-container {
-    background-color: rgb(153,153,153);
+    background-color: rgb(153, 153, 153);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     height: 50%;
@@ -40,7 +40,7 @@
     background-color: rgb(255, 255, 255);
     width: 160px;
     height: 160px;
-    box-shadow: 10px 5px 5px rgba(18,18,18,.1);
+    box-shadow: 10px 5px 5px rgba(18, 18, 18, .1);
     border-radius: 4px;
 }
 
@@ -71,7 +71,7 @@
     margin-top: 70px;
     float: right;
 }
-  
+
 .user-operation-container button {
     margin-right: 40px;
     padding: 0 16px;
@@ -82,7 +82,7 @@
     border: 1px solid;
     border-radius: 3px;
 }
-  
+
 .grey-button {
     background-color: #8590a6;
 }

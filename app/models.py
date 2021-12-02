@@ -8,28 +8,30 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import login_manager
 import bleach
 
-#配置权限常量
-class Permission:
-    FOLLOW = 1 #关注别人
-    WRITE = 4 #写文章
-    ADMIN = 16 #管理员
 
-#定义角色模型
+# 配置权限常量
+class Permission:
+    FOLLOW = 1  # 关注别人
+    WRITE = 4  # 写文章
+    ADMIN = 16  # 管理员
+
+
+# 定义角色模型
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     default = db.Column(db.Boolean, default=False, index=True)
     permissions = db.Column(db.Integer)
-    users = db.relationship('User', backref='role', lazy='dynamic') #一个角色可能属于多个用户, lazy参数禁止自动执行查询
+    users = db.relationship('User', backref='role', lazy='dynamic')  # 一个角色可能属于多个用户, lazy参数禁止自动执行查询
 
-    #创建一个新用户时的默认参数
+    # 创建一个新用户时的默认参数
     def __init__(self, **kwargs):
         super(Role, self).__init__(**kwargs)
         if self.permissions is None:
             self.permissions = 0
-    
-    #代替手动向数据库中添加角色的静态方法
+
+    # 代替手动向数据库中添加角色的静态方法
     @staticmethod
     def insert_roles():
         roles = {
@@ -48,11 +50,11 @@ class Role(db.Model):
             db.session.add(role)
         db.session.commit()
 
-    #管理权限的模块
+    # 管理权限的模块
     def add_permission(self, perm):
         if not self.has_permission(perm):
             self.permissions += perm
-    
+
     def remove_permission(self, perm):
         if self.has_permission(perm):
             self.permissions -= perm
@@ -61,22 +63,23 @@ class Role(db.Model):
         self.permissions = 0
 
     def has_permission(self, perm):
-        return self.permissions & perm == perm #使用位运算检查特定权限
+        return self.permissions & perm == perm  # 使用位运算检查特定权限
 
     def __repr__(self):
         return '<Role %r>' % self.name
 
-#定义用户模型
+
+# 定义用户模型
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id')) #每一个用户只能有一个角色
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))  # 每一个用户只能有一个角色
     password_hash = db.Column(db.String(128))
-    #本来要做验证功能的，咕咕咕
+    # 本来要做验证功能的，咕咕咕
     confirmed = db.Column(db.Boolean, default=True)
-    #显示在个人空间的个人信息
+    # 显示在个人空间的个人信息
     name = db.Column(db.String(64))
     location = db.Column(db.String(64))
     about_me = db.Column(db.Text())
@@ -103,14 +106,14 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    #检查用户权限
+    # 检查用户权限
     def can(self, perm):
         return self.role is not None and self.role.has_permission(perm)
 
     def is_administrator(self):
         return self.can(Permission.ADMIN)
 
-    #刷新最后访问时间
+    # 刷新最后访问时间
     def ping(self):
         self.last_seen = datetime.utcnow()
         db.session.add(self)
@@ -119,7 +122,8 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-#未登录用户应用自定义的匿名类检测
+
+# 未登录用户应用自定义的匿名类检测
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permissions):
         return False
@@ -127,13 +131,16 @@ class AnonymousUser(AnonymousUserMixin):
     def is_administrator(self):
         return False
 
+
 login_manager.anonymous_user = AnonymousUser
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-#定义博客文章模型
+
+# 定义博客文章模型
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)

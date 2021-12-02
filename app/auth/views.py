@@ -1,18 +1,20 @@
 from flask import render_template, redirect, request, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
-from .. models import User
-from . forms import LoginForm, RegistrationForm
+from ..models import User
+from .forms import LoginForm, RegistrationForm
 from app import db
 
-#更新已登录用户的最后访问时间
+
+# 更新已登录用户的最后访问时间
 @auth.before_app_request
 def before_request():
     if current_user.is_authenticated:
         current_user.ping()
         if not current_user.confirmed and request.endpoint \
-            and request.blueprint != 'auth' and request.endpoint != 'static':
+                and request.blueprint != 'auth' and request.endpoint != 'static':
             return redirect(url_for('auth.unconfirmed'))
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -28,12 +30,14 @@ def login():
         flash('邮箱或密码错误')
     return render_template('auth/login.html', form=form)
 
+
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
     flash('你已退出当前用户')
     return redirect(url_for('main.index'))
+
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
