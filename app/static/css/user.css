@@ -1,8 +1,8 @@
 .page-container {
     display: block;
-    margin-left: 20%;
-    margin-right: 20%;
-    width: 60%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
 }
 
 .user-container {
@@ -78,7 +78,7 @@
 }
 
 .user-operation-container {
-    margin-top: 0px;
+    margin-top: 5%;
     float: right;
 }
 
@@ -114,18 +114,17 @@
 }
 
 .content-container {
-    height: 600px;
+    margin-left: 0;
+    height: 700px;
 }
 
 .main-content-container {
-    float: left;
+    float: right;
     background-color: rgb(255, 255, 255);
-    margin-top: 12px;
-    height: 260px;
+    margin-top: 28px;
     box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
     border-radius: 2px;
-    height: 600px;
-    width: 80%;
+    width: 74%;
 }
 
 .option-bar {
@@ -169,14 +168,12 @@
 }
 
 .side-content-container {
-    float: right;
+    float: left;
     background-color: rgb(255, 255, 255);
-    margin-top: 12px;
-    height: 260px;
+    margin-top: 0;
     box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
     border-radius: 2px;
-    height: 600px;
-    width: 19%;
+    width: 24%;
 }
 
 .side-content {
@@ -185,13 +182,14 @@
     padding: 0;
     overflow: hidden;
     border-bottom: 2px solid rgb(240, 240, 240) ;
-    height: 40px;
-    line-height: 40px;
+    height: 60px;
+    line-height: 60px;
 }
 
 .side-content-left-item {
+    margin-left: 5%;
     float: left;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
     border-right: 2px solid rgb(240, 240, 240) ;
 }
@@ -202,8 +200,9 @@
 }
 
 .side-content-right-item {
+    margin-left: 5%;
     float: left;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -211,3 +210,8 @@
     display: block;
     padding: 8px;
 }
+
+.side-content-box {
+    background-color: rgb(255, 255, 255);
+}
+
