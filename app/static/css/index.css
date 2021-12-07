@@ -8,7 +8,12 @@
     margin-bottom: 1px;
 }
 
-.page-container{
+.header-operation-container {
+    width: 100%;
+    margin: auto;
+}
+
+.page-container {
     background-color: rgb(255, 255, 255);
 }
 
@@ -17,12 +22,12 @@
     background-color: rgb(255, 255, 255);
     box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
     border-radius: 2px;
-    
 }
 
 .index-header-operation-box {
     float: left;
 }
+
 .index-header-operation {
     margin-left: 40px;
     margin-right: 20px;
@@ -43,8 +48,7 @@
 }
 
 .context-operation-container {
-    margin-top: 5px;
-    margin: 0px;
+    margin: 0;
     height: 30px;
 }
 

@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
           rel="stylesheet" type="text/css"/>
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet"/>
     {% block head %}
     {% endblock %}
 </head>
@@ -22,7 +23,13 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="index.html">Hambloger</a>
+        <a class="navbar-brand" href="/">Hambloger</a>
+        <div class="search-box-container">
+            <input type="text" class="search-input">
+            <a href="#" class="search-click">
+                <img src="{{url_for('static', filename='icons/search.png')}}" style="width: 20px;">
+            </a>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
@@ -30,43 +37,40 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">关于</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">发布文章</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">关注</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">关于</a></li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">
+                        <!--<img src="{{ url_for('static', filename='icons/sidebar-write.png') }} " class="sidebar-img">-->
+                        <span>发表文章</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">
+                        <!--<img src="{{ url_for('static', filename='icons/sidebar-paper.png') }}" class="sidebar-img">-->
+                        <span>我的文章</span>
+                    </a></li>
+                <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">
+                        <!--<img src="{{ url_for('static', filename='icons/sidebar-follow.png') }}" class="sidebar-img">-->
+                        <span>我的关注</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">
+                        <!--<img src="{{ url_for('static', filename='icons/sidebar-like.png') }}" class="sidebar-img">-->
+                        <span>我的收藏</span>
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <div class="main">
-        {% if current_user.is_authenticated %}
-        <div class="main-left-container">
-            <div class="sidebar">
-                <a class="sidebar-box" href="/">
-                    <img src="{{ url_for('static', filename='icons/sidebar-write.png') }} " class="sidebar-img">
-                    <span>发表文章</span>
-                </a>
-                <a class="sidebar-box" href="/">
-                    <img src="{{ url_for('static', filename='icons/sidebar-paper.png') }}" class="sidebar-img">
-                    <span>我的文章</span>
-                </a>
-                <a class="sidebar-box" href="/">
-                    <img src="{{ url_for('static', filename='icons/sidebar-follow.png') }}" class="sidebar-img">
-                    <span>我的关注</span>
-                </a>
-                <a class="sidebar-box" href="/">
-                    <img src="{{ url_for('static', filename='icons/sidebar-like.png') }}" class="sidebar-img">
-                    <span>我的收藏</span>
-                </a>
-            </div>
-        </div>
-        {% endif %}
-        <div class="main-middle-container">
-            {% block page_content %}
-            {% endblock %}
-        </div>
-    </div>
+    {% block page_content %}
+    {% endblock %}
 </div>
 
 <div class="mouse-follow"></div>
@@ -102,23 +106,23 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
-                        <a href="#!">
+                        <a href="/">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                        <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
                                     </span>
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#!">
+                        <a href="/">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                        <i class="fab fa-qq fa-stack-1x fa-inverse"></i>
                                     </span>
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#!">
+                        <a href="https://github.com/vozeo/Hambloger">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
                                         <i class="fab fa-github fa-stack-1x fa-inverse"></i>

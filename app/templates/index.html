@@ -24,24 +24,26 @@
 {% block page_content %}
 <div class="page-container">
     <div class="index-page-header">
-        <div class="index-header-operation-box">
-            <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">关注</button>
-        </div>
-        <div class="index-header-operation-box">
-            <button class="index-header-operation" id="index-btn2" onclick="index_change(2)">推荐</button>
+        <div class="header-operation-container">
+            <div class="index-header-operation-box">
+                <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">关注</button>
+            </div>
+            <div class="index-header-operation-box">
+                <button class="index-header-operation" id="index-btn2" onclick="index_change(2)">推荐</button>
+            </div>
         </div>
     </div>
 
     <!-- Main Content-->
-    <div class="container px-4 px-lg-5">
+    <div class="container px-10">
         {% for post in posts %}
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="row gx-8 justify-content-center">
+            <div class="col-10">
                 <!-- Post preview-->
                 <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">这是标题</h2>
-                        <h3 class="post-subtitle">这是副标题</h3>
+                    <a href="{{ url_for('.post', id=post.id) }}">
+                        <h3 class="post-title">这是标题</h3>
+                        <h4 class="post-subtitle">这是副标题</h4>
                     </a>
                     <p class="post-meta">
                         Posted by
@@ -65,41 +67,7 @@
                         <div class="operation-text">收藏</div>
                     </a>
                 </div>
-                <!-- Divider-->
                 <hr class="my-4"/>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <div class="main-context-container">
-        {% for post in posts %}
-        <div class="context">
-            <div class="context-header-container">
-                <div class="context-header">
-                    这是标题
-                </div>
-            </div>
-            <div class="context-body-container">
-                <div class="context-body">
-                    <a href="{{ url_for('.user', username=post.author.username) }}" class="context-user-link">
-                        {{ post.author.username }}
-                    </a>
-                    <span>
-                        ：{{ post.body }}
-                    </span>
-                </div>
-            </div>
-            <div class="context-operation-container">
-                <!--<div class="context-operation-blank-div"> </div>-->
-                <a class="operation-box">
-                    <img class="operation-img" src="{{url_for('static',filename='icons/share.png') }}">
-                    <div class="operation-text">分享</div>
-                </a>
-                <a class="operation-box">
-                    <img class="operation-img" src="{{url_for('static',filename='icons/index-star.png') }}">
-                    <div class="operation-text">收藏</div>
-                </a>
             </div>
         </div>
         {% endfor %}
@@ -122,7 +90,6 @@
             </li>
             {% endif %}
         </ul>
-        {% include '_posts.html' %}
     </div>
 
     {% if pagination %}
