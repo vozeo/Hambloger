@@ -7,7 +7,8 @@ from .. import db
 from ..models import Permission, User, Post
 from ..decorators import admin_required, permission_required
 
-#刚进网站的主页
+
+# 刚进网站的主页
 @main.route('/', methods=['GET', 'POST'])
 def index():
     form = PostForm()
@@ -29,31 +30,35 @@ def index():
         error_out=False)
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts,
-                            show_followed=show_followed, pagination=pagination)
+                           show_followed=show_followed, pagination=pagination)
 
-#查看全部文章
+
+# 查看全部文章
 @main.route('/all')
 @login_required
 def show_all():
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '', max_age=30*24*60*60) # 30天
+    resp.set_cookie('show_followed', '', max_age=30 * 24 * 60 * 60)  # 30天
     return resp
 
-#查看关注者的文章
+
+# 查看关注者的文章
 @main.route('/followed')
 @login_required
 def show_followed():
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '1', max_age=30*24*60*60) # 30天
+    resp.set_cookie('show_followed', '1', max_age=30 * 24 * 60 * 60)  # 30天
     return resp
 
-#查看帖子，但是不知道为什么文章没法显示，class post挂了
+
+# 查看帖子，但是不知道为什么文章没法显示，class post挂了
 @main.route('/post/<int:id>')
 def post(id):
     post = Post.query.get_or_404(id)
     return render_template('post.html', post=[post])
 
-#编辑帖子的页面
+
+# 编辑帖子的页面
 @main.route('/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit(id):
@@ -71,7 +76,8 @@ def edit(id):
     form.body.data = post.body
     return render_template('edit_post.html', form=form)
 
-#用户个人主页
+
+# 用户个人主页
 @main.route('/user/<username>')
 def user(username):
     user = User.query.filter_by(username=username).first()
@@ -80,7 +86,8 @@ def user(username):
     posts = user.posts.order_by(Post.timestamp.desc()).all()
     return render_template('user.html', user=user, posts=posts)
 
-#编辑个人资料
+
+# 编辑个人资料
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -98,7 +105,8 @@ def edit_profile():
     form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', form=form)
 
-#关注 的路由相应
+
+# 关注 的路由相应
 @main.route('/follow/<username>')
 @login_required
 @permission_required(Permission.FOLLOW)
@@ -115,7 +123,8 @@ def follow(username):
     flash('你刚刚关注了 %s.' % username)
     return redirect(url_for('.user', username=username))
 
-#取消关注
+
+# 取消关注
 @main.route('/unfollow/<username>')
 @login_required
 @permission_required(Permission.FOLLOW)
@@ -132,7 +141,8 @@ def unfollow(username):
     flash('你刚刚取消了对 %s 的关注' % username)
     return redirect(url_for('.user', username=username))
 
-#关注者 的路由
+
+# 关注者 的路由
 @main.route('/followers/<username>')
 def followers(username):
     user = User.query.filter_by(username=username).first()
@@ -149,7 +159,8 @@ def followers(username):
                            endpoint='.followers', pagination=pagination,
                            follows=follows)
 
-#有谁在关注Ta
+
+# 有谁在关注Ta
 @main.route('/followed_by/<username>')
 def followed_by(username):
     user = User.query.filter_by(username=username).first()
@@ -165,4 +176,3 @@ def followed_by(username):
     return render_template('followers.html', user=user, title="Followed by",
                            endpoint='.followed_by', pagination=pagination,
                            follows=follows)
-

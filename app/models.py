@@ -1,4 +1,4 @@
-#import hashlib
+# import hashlib
 from app import db
 from datetime import datetime
 from markdown import markdown
@@ -68,7 +68,8 @@ class Role(db.Model):
     def __repr__(self):
         return '<Role %r>' % self.name
 
-#用来实现关注功能的关联表
+
+# 用来实现关注功能的关联表
 class Follow(db.Model):
     __tablename__ = 'follows'
     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'),
@@ -77,7 +78,8 @@ class Follow(db.Model):
                             primary_key=True)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
-#定义用户模型
+
+# 定义用户模型
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -94,12 +96,12 @@ class User(UserMixin, db.Model):
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-    #关注信息
+    # 关注信息
     followed = db.relationship('Follow',
-                                foreign_keys=[Follow.follower_id],
-                                backref=db.backref('follower', lazy='joined'),
-                                lazy='dynamic',
-                                cascade='all, delete-orphan')
+                               foreign_keys=[Follow.follower_id],
+                               backref=db.backref('follower', lazy='joined'),
+                               lazy='dynamic',
+                               cascade='all, delete-orphan')
     followers = db.relationship('Follow',
                                 foreign_keys=[Follow.followed_id],
                                 backref=db.backref('followed', lazy='joined'),
@@ -115,7 +117,7 @@ class User(UserMixin, db.Model):
                 self.role = Role.query.filter_by(name='User').first()
         self.follow(self)
 
-    #关注自己
+    # 关注自己
     @staticmethod
     def add_self_follows():
         for user in User.query.all():
@@ -130,7 +132,7 @@ class User(UserMixin, db.Model):
 
     @property
     def followed_posts(self):
-        return Post.query.join(Follow, Follow.followed_id == Post.author_id)\
+        return Post.query.join(Follow, Follow.followed_id == Post.author_id) \
             .filter(Follow.follower_id == self.id)
 
     @password.setter
@@ -156,16 +158,16 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-    #关注相关的方法
+    # 关注相关的方法
     def follow(self, user):
         if not self.is_following(user):
             f = Follow(follower=self, followed=user)
             db.session.add(f)
 
     def unfollow(self, user):
-            f = self.followed.filter_by(followed_id=user.id).first()
-            if f:
-                db.session.delete(f)
+        f = self.followed.filter_by(followed_id=user.id).first()
+        if f:
+            db.session.delete(f)
 
     def is_following(self, user):
         if user.id is None:
@@ -179,7 +181,8 @@ class User(UserMixin, db.Model):
         return self.followers.filter_by(
             follower_id=user.id).first() is not None
 
-#未登录用户应用自定义的匿名类检测
+
+# 未登录用户应用自定义的匿名类检测
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permissions):
         return False
@@ -205,7 +208,7 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    #将body渲染成为html后存入body.html
+    # 将body渲染成为html后存入body.html
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
         allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
@@ -214,5 +217,6 @@ class Post(db.Model):
         target.body_html = bleach.linkify(bleach.clean(
             markdown(value, output_format='html'),
             tags=allowed_tags, strip=True))
+
 
 db.event.listen(Post.body, 'set', Post.on_changed_body)

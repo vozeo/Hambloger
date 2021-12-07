@@ -4,6 +4,7 @@ from faker import Faker
 from . import db
 from .models import User, Post
 
+
 def users(count=100):
     fake = Faker()
     i = 0
@@ -21,6 +22,7 @@ def users(count=100):
             i += 1
         except IntegrityError:
             db.session.rollback()
+
 
 def posts(count=100):
     fake = Faker()

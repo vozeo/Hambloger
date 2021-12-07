@@ -3,8 +3,8 @@
 {% import "_macros.html" as macros %}<!--显示分页栏的-->
 
 {% block head %}
-  <link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet">
-  <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block title %}Hambloger{% endblock %}
@@ -13,7 +13,7 @@
 <div class="page-container">
     <div class="index-page-header">
         <div class="index-header-operation-box">
-            <button class="index-header-operation" id="index-btn1" onclick="index_change(1)" >关注</button>
+            <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">关注</button>
         </div>
         <div class="index-header-operation-box">
             <button class="index-header-operation" id="index-btn2" onclick="index_change(2)">推荐</button>
@@ -56,17 +56,21 @@
         {{ wtf.quick_form(form) }}
         {% endif %}
     </div>
-    
+
     <div class="posts">
         <ul class="nav nav-tabs">
-            <li{% if not show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}">全部</a></li>
+            <li
+                    {% if not show_followed %} class="active" {% endif %}><a href="{{ url_for('.show_all') }}">全部</a>
+            </li>
             {% if current_user.is_authenticated %}
-            <li{% if show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_followed') }}">关注</a></li>
+            <li
+                    {% if show_followed %} class="active" {% endif %}><a href="{{ url_for('.show_followed') }}">关注</a>
+            </li>
             {% endif %}
         </ul>
         {% include '_posts.html' %}
     </div>
-    
+
     {% if pagination %}
     <div class="pagination">
         {{ macros.pagination_widget(pagination, '.index') }}
@@ -74,16 +78,15 @@
     {% endif %}
 
     <script>
-        var x;
-        x = 2;
+        let x = 2;
         document.getElementById("index-btn2").style.color = "#ff0000";
-        function index_change(ele_id){
-            for(i = 1; i <= 2; i++)
-                document.getElementById("index-btn"+i).style.color = "#000000";
-            document.getElementById("index-btn"+ele_id).style.color = "#ff0000";
+        function index_change(ele_id) {
+            for (let i = 1; i <= 2; i++)
+                document.getElementById("index-btn" + i).style.color = "#000000";
+            document.getElementById("index-btn" + ele_id).style.color = "#ff0000";
         }
     </script>
-    
+
 </div>
 
 {% endblock %}
