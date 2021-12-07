@@ -3,13 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title> {% block title %}Hambloger{% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='icons/ham2.png') }}"
           type="image/x-icon">
     <link rel="icon" href="{{ url_for('static', filename='icons/ham2.png') }}"
           type="image/x-icon">
     <link href="{{ url_for('static',filename='css/base.css') }}" rel="stylesheet">
+<<<<<<< Updated upstream
     {% block head %} {% endblock %}
     <title> {% block title %}Hambloger{% endblock %}</title>
+=======
+    <link href="css/styles.css" rel="stylesheet"/>
+    {% block head %}
+    {% endblock %}
+    
+>>>>>>> Stashed changes
 </head>
 
 <body>
