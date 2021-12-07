@@ -1,6 +1,6 @@
 {% macro pagination_widget(pagination, endpoint) %}
 <ul class="pagination pagination-lg justify-content-center">
-    <li {% if not pagination.has_prev %} class="page-item disabled" {% endif %}>
+    <li class="page-item {% if not pagination.has_next %} disabled {% endif %}">
         <a href="{% if pagination.has_prev %}{{ url_for(endpoint,page = pagination.page - 1, **kwargs) }}{% else %}#{% endif %}">
             <i class="fa fa-angle-left"></i>
         </a>
@@ -22,7 +22,7 @@
     {% endif %}
     {% endfor %}
 
-    <li {% if not pagination.has_prev %} class="page-item disabled" {% endif %}>
+    <li class="page-item {% if not pagination.has_next %} disabled {% endif %}" >
         <a href="{% if pagination.has_next %}{{ url_for(endpoint,page = pagination.page + 1, **kwargs) }}{% else %}#{% endif %}">
             <i class="fa fa-angle-right"></i>
         </a>
