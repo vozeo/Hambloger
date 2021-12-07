@@ -17,6 +17,10 @@
     background-color: rgb(255, 255, 255);
 }
 
+.pagination {
+    margin: 0 auto;
+}
+
 .main-context-container {
     display: block;
     background-color: rgb(255, 255, 255);
