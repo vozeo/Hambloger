@@ -55,7 +55,7 @@
     float: left;
     margin-top: 10px;
     margin-left: 80px;
-    width: 650px;
+    width: 450px;
 }
 
 .user-name-container {
@@ -78,7 +78,7 @@
 }
 
 .user-operation-container {
-    margin-top: 70px;
+    margin-top: 0px;
     float: right;
 }
 
@@ -111,4 +111,103 @@
 .non-follow-button {
     color: rgb(252, 252, 252);
     background-color: #06f;
+}
+
+.content-container {
+    height: 600px;
+}
+
+.main-content-container {
+    float: left;
+    background-color: rgb(255, 255, 255);
+    margin-top: 12px;
+    height: 260px;
+    box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
+    border-radius: 2px;
+    height: 600px;
+    width: 80%;
+}
+
+.option-bar {
+    background-color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(240, 240, 240) ;
+    height: 60px;
+    line-height: 60px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.option-item {
+    float: left;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.option-item a {
+    display: inline;
+    padding: 16px;
+}
+
+.option-link {
+    text-decoration: none;
+    color: rgb(12, 12, 12);
+}
+
+.option-link:hover {
+    text-decoration: none;
+    color: rgb(197, 234, 245);
+    border-bottom: 2px solid rgb(153, 188, 221);
+}
+
+.main-content-box {
+    background-color: rgb(255, 255, 255);
+}
+
+.side-content-container {
+    float: right;
+    background-color: rgb(255, 255, 255);
+    margin-top: 12px;
+    height: 260px;
+    box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
+    border-radius: 2px;
+    height: 600px;
+    width: 19%;
+}
+
+.side-content {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-bottom: 2px solid rgb(240, 240, 240) ;
+    height: 40px;
+    line-height: 40px;
+}
+
+.side-content-left-item {
+    float: left;
+    font-size: 12px;
+    font-weight: 600;
+    border-right: 2px solid rgb(240, 240, 240) ;
+}
+
+.side-content-left-item a {
+    display: block;
+    padding: 8px;
+}
+
+.side-content-right-item {
+    float: left;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.side-content-right-item a {
+    display: block;
+    padding: 8px;
 }
