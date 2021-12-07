@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block title %}Hambloger - Edit Post{% endblock %}
-{% block page_content %}
 
-<div class="page-header">
-    <h1>Edit Post</h1>
+{% block title %}Hambloger - 编辑{% endblock %}
+
+{% block head %}
+<link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+<div class="posts">
+    <h1>编辑文章</h1>
 </div>
-<div>
+<div class=posts>
     {{ wtf.quick_form(form) }}
 </div>
 {% endblock %}

@@ -1,3 +1,4 @@
+from flask_pagedown.fields import PageDownField
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.fields.simple import TextAreaField
@@ -18,5 +19,5 @@ class EditProfileForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    body = TextAreaField("想写什么？", validators=[DataRequired()])
+    body = PageDownField("要写点什么？", validators=[DataRequired()])
     submit = SubmitField('写完了')

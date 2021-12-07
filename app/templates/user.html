@@ -3,14 +3,15 @@
 {% block title %}Hambloger - {{ user.username }}{% endblock %}
 
 {% block head %}
-  <link href="{{ url_for('static',filename='css/user.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/user.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block page_content %}
+
 <div class="page-container">
     <div class="user-container">
         <div class="user-cover-container">
-            
+
         </div>
         <div class="user-profile-container">
             <div class="user-mask-container">
@@ -27,34 +28,56 @@
                 </div>
             </div>
             <div class="user-operation-container">
-            {% if user == current_user %}
-                <a href="{{ url_for('.edit_profile') }}"><button type="button" class="edit-profile-button">
-                    <span>编辑个人资料</span>
-                </button></a>
-            {% else %}
-                <a href="{{ url_for('.edit_profile') }}"><button type="button" class="non-follow-button">
-                    <span>+ 关注</span>
-                </button></a>
-            {% endif %}
+                <p>
+                    {% if current_user.can(Permission.FOLLOW) and user != current_user %}
+                    {% if not current_user.is_following(user) %}
+                    <a href="{{ url_for('.follow', username=user.username) }}"
+                       class="btn btn-primary">关注</a>
+                    {% else %}
+                    <a href="{{ url_for('.unfollow', username=user.username) }}"
+                       class="btn btn-default">取消关注</a>
+                    {% endif %}
+                    {% endif %}
+                    <a href="{{ url_for('.followers', username=user.username) }}">
+                        谁关注Ta: <span class="badge">{{ user.followers.count() - 1 }}</span>
+                    </a>
+                    <a href="{{ url_for('.followed_by', username=user.username) }}">
+                        Ta的关注: <span class="badge">{{ user.followed.count() - 1 }}</span>
+                    </a>
+                    {% if current_user.is_authenticated and user != current_user and
+                    user.is_following(current_user) %}
+                    | <span class="label label-default">关注了你</span>
+                    {% endif %}
+                </p>
+                <p>
+                    {% if user == current_user %}
+                    <a href="{{ url_for('.edit_profile') }}">
+                        <button type="button" class="edit-profile-button">
+                            <span>编辑个人资料</span>
+                        </button>
+                    </a>
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
-        {% if user.name or user.location %}
-        <p>
-            {% if user.name %}{{ user.name }}{% endif %}
-            {% if user.location %}
-                来自 <a href="https://maps.google.com/?q={{ user.location }}">
-                    {{ user.location }}
-                </a>
-            {% endif %}
-        </p>
-        {% endif %}
-        {% if current_user.is_administrator() %}
-        <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
-        {% endif %}
-        <p>
-            我们于 {{ moment(user.member_since).format('L') }} 首次见面。<br>
-            上次登录于 {{ moment(user.last_seen).fromNow() }} 。
-        </p>
+    {% if user.name or user.location %}
+    <p>
+        {% if user.name %} {{ user.name }} {% endif %}
+        {% if user.location %} 来自
+        <a href="https://maps.google.com/?q={{ user.location }}">
+            {{ user.location }}
+        </a> {% endif %}
+    </p>
+    {% endif %} {% if current_user.is_administrator() %}
+    <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+    {% endif %}
+    <p>
+        我们于 {{ moment(user.member_since).format('MMM Do YY') }} 首次见面。<br> 上次登录于 {{ moment(user.last_seen).fromNow() }} 。
+    </p>
 </div>
-{% endblock %}
+
+<h3>
+    <div align="center">{{ user.username }}的文章</div>
+</h3>
+{% include '_posts.html' %} {% endblock %}

@@ -1,52 +1,97 @@
 {% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}<!--渲染表单的-->
+{% import "_macros.html" as macros %}<!--显示分页栏的-->
 
-{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+<link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block title %}Hambloger{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <h1>
-        <div align="center">
-            Hello,
+<div class="page-container">
+    <div class="index-page-header">
+        <div class="index-header-operation-box">
+            <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">关注</button>
+        </div>
+        <div class="index-header-operation-box">
+            <button class="index-header-operation" id="index-btn2" onclick="index_change(2)">推荐</button>
+        </div>
+    </div>
+    <div class="main-context-container">
+        {% for post in posts %}
+        <div class="context">
+            <div class="context-header-container">
+                <div class="context-header">
+                    这是标题
+                </div>
+            </div>
+            <div class="context-body-container">
+                <div class="context-body">
+                    <a href="{{ url_for('.user', username=post.author.username) }}" class="context-user-link">
+                        {{ post.author.username }}
+                    </a>
+                    <span>
+                        ：{{ post.body }}
+                    </span>
+                </div>
+            </div>
+            <div class="context-operation-container">
+                <!--<div class="context-operation-blank-div"> </div>-->
+                <a class="operation-box">
+                    <img class="operation-img" src="{{url_for('static',filename='icons/share.png') }}">
+                    <div class="operation-text">分享</div>
+                </a>
+                <a class="operation-box">
+                    <img class="operation-img" src="{{url_for('static',filename='icons/index-star.png') }}">
+                    <div class="operation-text">收藏</div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class=posts-header>
+        {% if current_user.can(Permission.WRITE) %}
+        {{ wtf.quick_form(form) }}
+        {% endif %}
+    </div>
+
+    <div class="posts">
+        <ul class="nav nav-tabs">
+            <li
+                    {% if not show_followed %} class="active" {% endif %}><a href="{{ url_for('.show_all') }}">全部</a>
+            </li>
             {% if current_user.is_authenticated %}
-            {{ current_user.username }}
-            {% else %}
-            Stranger
+            <li
+                    {% if show_followed %} class="active" {% endif %}><a href="{{ url_for('.show_followed') }}">关注</a>
+            </li>
             {% endif %}
-        </div>
-    </h1>
-</div>
-<div>
-    {% if current_user.can(Permission.WRITE) %}
-    {{ wtf.quick_form(form) }}
+        </ul>
+        {% include '_posts.html' %}
+    </div>
+
+    {% if pagination %}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, '.index') }}
+    </div>
     {% endif %}
+
+    <script>
+        let x = 2;
+        document.getElementById("index-btn2").style.color = "#ff0000";
+        function index_change(ele_id) {
+            for (let i = 1; i <= 2; i++)
+                document.getElementById("index-btn" + i).style.color = "#000000";
+            document.getElementById("index-btn" + ele_id).style.color = "#ff0000";
+        }
+    </script>
+
 </div>
-<ul class='posts'>
-    {% for post in posts %}
-    <li class='post'>
-        <div class="profile-thumbnail">
-            <a href="{{ url_for('.user', username=post.author.username) }}">
-            </a>
-        </div>
-        <div class="post-date">{{ moment(post.timestamp).fromNow() }}</div>
-        <div class="post-author">
-            <a href="{{ url_for('.user', username=post.author.username) }}">
-                {{ post.author.username }}
-            </a>
-        </div>
-        <div class="post-body">
-            {% if post.body_html %}
-            {{ post.body_html | safe }}
-            {% else %}
-            {{ post.body }}
-            {% endif %}
-        </div>
-    </li>
-    {% endfor %}
-</ul>
+
 {% endblock %}
 
+<!--为了支持markdown而加的模板-->>
 {% block scripts %}
 {{ super() }}
 {{ pagedown.include_pagedown() }}

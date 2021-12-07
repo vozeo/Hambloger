@@ -1,0 +1,90 @@
+.index-page-header {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    margin-top: 12px;
+    box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
+    border-radius: 2px;
+    height: 60px;
+    margin-bottom: 1px;
+}
+
+.page-container{
+    background-color: rgb(255, 255, 255);
+}
+
+.main-context-container {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
+    border-radius: 2px;
+    
+}
+
+.index-header-operation-box {
+    float: left;
+}
+.index-header-operation {
+    margin-left: 40px;
+    margin-right: 20px;
+    font-size: 20px;
+    margin-top: 13px;
+    text-decoration: none;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+}
+
+.context {
+    border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.context-body-container {
+    margin: 6px;
+}
+
+.context-operation-container {
+    margin-top: 5px;
+    margin: 0px;
+    height: 30px;
+}
+
+.operation-text {
+    margin-left: 6px;
+    float: left;
+    color: #8a8a8a;
+}
+
+.operation-img {
+    margin: 1px;
+    height: 20px;
+    width: 20px;
+    float: right;
+}
+
+.operation-box {
+    height: 30px;
+    float: left;
+    margin-left: 60px;
+}
+
+.context-operation-blank-div {
+    width: 120px;
+    height: 30px;
+    float: left;
+}
+
+.context-user-link {
+    text-decoration: none;
+    color: #000000;
+}
+
+.context-header-container {
+    height: 30px;
+}
+
+.context-header {
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 12px;
+}

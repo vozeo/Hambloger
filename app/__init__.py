@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
+from flask_pagedown import PageDown
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_moment import Moment
@@ -14,6 +15,7 @@ db = SQLAlchemy()
 pagedown = PageDown()
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
+pagedown = PageDown()
 
 
 def create_app(config_name):
