@@ -37,8 +37,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">关于</a></li>
                 {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4"
+                       href="{{ url_for('main.user', username=current_user.username) }}">
+                        <span>个人主页</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">
                         <!--<img src="{{ url_for('static', filename='icons/sidebar-write.png') }} " class="sidebar-img">-->
@@ -60,6 +65,24 @@
                     <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">
                         <!--<img src="{{ url_for('static', filename='icons/sidebar-like.png') }}" class="sidebar-img">-->
                         <span>我的收藏</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('auth.logout')}}">
+                        <span>登出</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4"
+                       href="{{url_for('auth.register')}}">
+                        <span>注册</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-lg-3 py-3 py-lg-4"
+                       href="{{url_for('auth.login')}}">
+                        <span>登录</span>
                     </a>
                 </li>
                 {% endif %}
