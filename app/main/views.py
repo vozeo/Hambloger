@@ -98,7 +98,6 @@ def edit_profile():
     form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', form=form)
 
-<<<<<<< HEAD
 #关注 的路由相应
 @main.route('/follow/<username>')
 @login_required
@@ -166,16 +165,4 @@ def followed_by(username):
     return render_template('followers.html', user=user, title="Followed by",
                            endpoint='.followed_by', pagination=pagination,
                            follows=follows)
-=======
 
-@main.route('/', methods=['GET', 'POST'])
-def index():
-    form = PostForm()
-    if current_user.can(Permission.WRITE) and form.validate_on_submit():
-        post = Post(body=form.body.data, author=current_user._get_current_object())
-        db.session.add(post)
-        db.session.commit()
-        return redirect(url_for('.index'))
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', form=form, posts=posts)
->>>>>>> 541f437a95e15acd4d647a54d5b1c8d676481858

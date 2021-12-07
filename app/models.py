@@ -68,7 +68,6 @@ class Role(db.Model):
     def __repr__(self):
         return '<Role %r>' % self.name
 
-<<<<<<< HEAD
 #用来实现关注功能的关联表
 class Follow(db.Model):
     __tablename__ = 'follows'
@@ -79,10 +78,6 @@ class Follow(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 #定义用户模型
-=======
-
-# 定义用户模型
->>>>>>> 541f437a95e15acd4d647a54d5b1c8d676481858
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -161,7 +156,6 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-<<<<<<< HEAD
     #关注相关的方法
     def follow(self, user):
         if not self.is_following(user):
@@ -186,10 +180,6 @@ class User(UserMixin, db.Model):
             follower_id=user.id).first() is not None
 
 #未登录用户应用自定义的匿名类检测
-=======
-
-# 未登录用户应用自定义的匿名类检测
->>>>>>> 541f437a95e15acd4d647a54d5b1c8d676481858
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permissions):
         return False

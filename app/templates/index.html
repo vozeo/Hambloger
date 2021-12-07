@@ -4,13 +4,10 @@
 
 {% block head %}
   <link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block title %}Hambloger{% endblock %}
-
-{% block head %}
-    <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
-{% endblock %}
 
 {% block page_content %}
 <div class="page-container">
@@ -76,22 +73,23 @@
     </div>
     {% endif %}
 
-    <!--为了支持markdown而加的模板-->>
-    {% block scripts %}
-        {{ super() }}
-        {{ pagedown.include_pagedown() }}
-    {% endblock %}
+    <script>
+        var x;
+        x = 2;
+        document.getElementById("index-btn2").style.color = "#ff0000";
+        function index_change(ele_id){
+            for(i = 1; i <= 2; i++)
+                document.getElementById("index-btn"+i).style.color = "#000000";
+            document.getElementById("index-btn"+ele_id).style.color = "#ff0000";
+        }
+    </script>
+    
 </div>
 
 {% endblock %}
 
-<script>
-    var x;
-    x = 2;
-    document.getElementById("index-btn2").style.color = "#ff0000";
-    function index_change(ele_id){
-        for(i = 1; i <= 2; i++)
-            document.getElementById("index-btn"+i).style.color = "#000000";
-        document.getElementById("index-btn"+ele_id).style.color = "#ff0000";
-    }
-</script>
+<!--为了支持markdown而加的模板-->>
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
