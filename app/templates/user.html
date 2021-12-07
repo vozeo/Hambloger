@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {% extends "base.html" %}
 
 {% block title %}Hambloger - {{ user.username }}{% endblock %}
@@ -8,10 +8,7 @@
 {% endblock %}
 
 {% block page_content %}
-=======
-{% extends "base.html" %} {% block title %}Hambloger - {{ user.username }}{% endblock %} {% block head %}
-<link href="{{ url_for('static',filename='css/user.css') }}" rel="stylesheet"> {% endblock %} {% block page_content %}
->>>>>>> 541f437a95e15acd4d647a54d5b1c8d676481858
+
 <div class="page-container">
     <div class="user-container">
         <div class="user-cover-container">
@@ -32,7 +29,6 @@
                 </div>
             </div>
             <div class="user-operation-container">
-<<<<<<< HEAD
             <p>
                 {% if current_user.can(Permission.FOLLOW) and user != current_user %}
                     {% if not current_user.is_following(user) %}
@@ -61,15 +57,6 @@
                     </button></a>
                 {% endif %}
             </p>
-=======
-                {% if user == current_user %}
-                <a href="{{ url_for('.edit_profile') }}"><button type="button" class="edit-profile-button">
-                    <span>编辑个人资料</span>
-                </button></a> {% else %}
-                <a href="{{ url_for('.edit_profile') }}"><button type="button" class="non-follow-button">
-                    <span>+ 关注</span>
-                </button></a> {% endif %}
->>>>>>> 541f437a95e15acd4d647a54d5b1c8d676481858
             </div>
         </div>
     </div>

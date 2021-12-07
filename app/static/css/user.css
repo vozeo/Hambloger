@@ -55,11 +55,21 @@
     float: left;
     margin-top: 10px;
     margin-left: 80px;
+    width: 650px;
+}
+
+.user-name-container {
+    float: left;
 }
 
 .username {
     font-size: 32px;
     font-weight: 900;
+}
+
+.about_me-container {
+    height: 30px;
+    overflow: hidden;
 }
 
 .about_me {
