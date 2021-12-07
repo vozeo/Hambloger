@@ -10,6 +10,12 @@ div {
     display: block;
 }
 
+div {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
 .navbar-container {
     background-color: rgb(9, 7, 35);
     height: 50px;
@@ -64,7 +70,6 @@ div {
 }
 
 .sidebar {
-
     width: 50px;
     height: 184px;
     display: flex;
@@ -74,7 +79,6 @@ div {
     border-radius: 10px;
     transition: .3s;
     overflow: hidden;
-
     position: fixed;
     top: 200px;
 }
@@ -201,9 +205,7 @@ footer {
     border-radius: 40px;
     margin: 5px;
     width: 300px;
-
 }
-
 
 .search-input {
     border: none;

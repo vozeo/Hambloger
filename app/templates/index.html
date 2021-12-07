@@ -1,11 +1,16 @@
 {% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/wtf.html" as wtf %}<!--渲染表单的-->
+{% import "_macros.html" as macros %}<!--显示分页栏的-->
 
 {% block head %}
   <link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block title %}Hambloger{% endblock %}
+
+{% block head %}
+    <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block page_content %}
 <div class="page-container">
@@ -49,11 +54,36 @@
         </div>
         {% endfor %}
     </div>
-<div>
-    {% if current_user.can(Permission.WRITE) %}
-    {{ wtf.quick_form(form) }}
+    <div class=posts-header>
+        {% if current_user.can(Permission.WRITE) %}
+        {{ wtf.quick_form(form) }}
+        {% endif %}
+    </div>
+    
+    <div class="posts">
+        <ul class="nav nav-tabs">
+            <li{% if not show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}">全部</a></li>
+            {% if current_user.is_authenticated %}
+            <li{% if show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_followed') }}">关注</a></li>
+            {% endif %}
+        </ul>
+        {% include '_posts.html' %}
+    </div>
+    
+    {% if pagination %}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, '.index') }}
+    </div>
     {% endif %}
+
+    <!--为了支持markdown而加的模板-->>
+    {% block scripts %}
+        {{ super() }}
+        {{ pagedown.include_pagedown() }}
+    {% endblock %}
 </div>
+
+{% endblock %}
 
 <script>
     var x;
@@ -65,4 +95,3 @@
         document.getElementById("index-btn"+ele_id).style.color = "#ff0000";
     }
 </script>
-{% endblock %}
