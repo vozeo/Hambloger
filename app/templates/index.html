@@ -5,6 +5,7 @@
 {% block head %}
 <link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet">
 <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet"/>
 <header class="masthead" style="background-image: url('../static/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -101,6 +102,7 @@
     <script>
         let x = 2;
         document.getElementById("index-btn2").style.color = "#ff0000";
+
         function index_change(ele_id) {
             for (let i = 1; i <= 2; i++)
                 document.getElementById("index-btn" + i).style.color = "#000000";

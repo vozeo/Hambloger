@@ -1,20 +1,20 @@
 {% macro pagination_widget(pagination, endpoint) %}
 <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item {% if not pagination.has_next %} disabled {% endif %}">
-        <a href="{% if pagination.has_prev %}{{ url_for(endpoint,page = pagination.page - 1, **kwargs) }}{% else %}#{% endif %}">
+    <button class="page-item border-0 {% if not pagination.has_prev %} disabled {% endif %}">
+        <a class="rounded-circle border-0" href="{% if pagination.has_prev %}{{ url_for(endpoint,page = pagination.page - 1, **kwargs) }}{% else %}#{% endif %}">
             <i class="fa fa-angle-left"></i>
         </a>
-    </li>
+    </button>
 
     {% for p in pagination.iter_pages() %}
     {% if p %}
     {% if p == pagination.page %}
-    <li class="active rounded-circle border-0">
-        <a class="page-link" href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+    <li class="page-item active">
+        <a class="page-link rounded-circle border-0" href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
     </li>
     {% else %}
-    <li class="rounded-circle border-0">
-        <a class="page-link" href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+    <li class="page-item">
+        <a class="page-link rounded-circle border-0" href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
     </li>
     {% endif %}
     {% else %}
@@ -22,7 +22,7 @@
     {% endif %}
     {% endfor %}
 
-    <button class="page-item rounded-circle border-0 {% if not pagination.has_next %} disabled {% endif %}" >
+    <button class="page-item border-0 {% if not pagination.has_next %} disabled {% endif %}" >
         <a href="{% if pagination.has_next %}{{ url_for(endpoint,page = pagination.page + 1, **kwargs) }}{% else %}#{% endif %}">
             <i class="fa fa-angle-right"></i>
         </a>
