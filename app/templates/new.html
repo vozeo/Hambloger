@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Hambloger - 发表{% endblock %}
+
+{% block head %}
+<link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+<div class="posts">
+    <h1>发表文章</h1>
+</div>
+<div class=posts>
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
