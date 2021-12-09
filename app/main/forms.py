@@ -19,5 +19,7 @@ class EditProfileForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
+    title = StringField('标题', validators=[Length(0, 64)])
+    sub_title = StringField('副标题', validators=[Length(0, 64)])
     body = PageDownField("要写点什么？", validators=[DataRequired()])
     submit = SubmitField('写完了')

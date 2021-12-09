@@ -52,8 +52,8 @@
                 <!-- Post preview-->
                 <div class="post-preview">
                     <a href="{{ url_for('.post', id=post.id) }}">
-                        <h3 class="post-title">这是标题</h3>
-                        <h4 class="post-subtitle">这是副标题</h4>
+                        <h3 class="post-title">{{ post.title }}</h3>
+                        <h4 class="post-subtitle">{{ post.sub_title }}</h4>
                     </a>
                     <p class="post-meta">
                         Posted by
