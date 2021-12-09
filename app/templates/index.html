@@ -27,11 +27,20 @@
     <div class="index-page-header">
         <div class="header-operation-container">
             <div class="index-header-operation-box">
-                <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">关注</button>
+                <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">
+                    <a href="{{ url_for('.show_all') }}">全部</a>
+                </button>
             </div>
             <div class="index-header-operation-box">
                 <button class="index-header-operation" id="index-btn2" onclick="index_change(2)">推荐</button>
             </div>
+            {% if current_user.is_authenticated %}
+            <div class="index-header-operation-box">
+                <button class="index-header-operation" id="index-btn3" onclick="index_change(3)">
+                    <a href="{{ url_for('.show_followed') }}">关注</a>
+                </button>
+            </div>
+            {% endif %}
         </div>
     </div>
 
@@ -74,24 +83,18 @@
         {% endfor %}
     </div>
 
-    <div class=posts-header>
+    <div class="posts-header">
         {% if current_user.can(Permission.WRITE) %}
-        {{ wtf.quick_form(form) }}
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.body(class="form-control", placeholder="要写点什么？") }}
+            <div class="mx-auto py-3 row justify-content-center">
+                {{ form.submit(class="btn btn-primary disabled") }}
+            </div>
+        </form>
         {% endif %}
     </div>
 
-    <div class="posts">
-        <ul class="nav nav-tabs">
-            <li {% if not show_followed %} class="active" {% endif %}>
-                <a href="{{ url_for('.show_all') }}">全部</a>
-            </li>
-            {% if current_user.is_authenticated %}
-            <li {% if show_followed %} class="active" {% endif %}>
-                <a href="{{ url_for('.show_followed') }}">关注</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
 
     {% if pagination %}
     <div class="pagination">

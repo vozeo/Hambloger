@@ -17,12 +17,12 @@
         <div class="form-wrapper">
             <form method="POST">
                 {{ form.hidden_tag() }}
-                {{form.email(class="input-item",placeholder="电子邮件地址")}}
-                {{form.password(class="input-item",placeholder="密码")}}
+                {{ form.email(class="input-item",placeholder="电子邮件地址") }}
+                {{ form.password(class="input-item",placeholder="密码") }}
                 {% for message in get_flashed_messages() %}
                 <p class="form-errmsg">{{message}}</p>
                 {% endfor %}
-                {{form.submit(class="btn")}}
+                {{ form.submit(class="btn") }}
             </form>
         </div>
         <div class="msg">

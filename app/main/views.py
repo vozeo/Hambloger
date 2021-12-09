@@ -106,7 +106,7 @@ def edit_profile():
     return render_template('edit_profile.html', form=form)
 
 
-# 关注 的路由相应
+# 关注
 @main.route('/follow/<username>')
 @login_required
 @permission_required(Permission.FOLLOW)
@@ -142,7 +142,7 @@ def unfollow(username):
     return redirect(url_for('.user', username=username))
 
 
-# 关注者 的路由
+# 关注者
 @main.route('/followers/<username>')
 def followers(username):
     user = User.query.filter_by(username=username).first()
