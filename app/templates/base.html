@@ -110,8 +110,7 @@
             imgy = xyz.y - img.offsetTop - img.clientHeight / 2
             deg = 360 * Math.atan(imgy / imgx) / (2 * Math.PI)
             index = 0
-            let x = event.clientX
-            if (img.offsetLeft < x) {
+            if (img.offsetLeft < event.clientX) {
                 y = -180
             } else {
                 y = 0
