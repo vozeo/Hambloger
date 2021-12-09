@@ -29,8 +29,9 @@ def index():
         page, per_page=current_app.config['HAMBLOGER_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
-    edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('index.html', form=form, posts=posts, show_followed=show_followed, pagination=pagination, edit_post=edit_post)
+    return render_template('index.html', form=form, posts=posts,
+                           show_followed=show_followed, pagination=pagination)
+
 
 # 查看全部文章
 @main.route('/all')
@@ -54,8 +55,7 @@ def show_followed():
 @main.route('/post/<int:id>')
 def post(id):
     post = Post.query.get_or_404(id)
-    edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('post.html', post=[post], edit_post=edit_post)
+    return render_template('post.html', post=[post])
 
 
 # 编辑帖子的页面
@@ -74,34 +74,8 @@ def edit(id):
         flash('更新成功。')
         return redirect(url_for('.post', id=post.id))
     form.body.data = post.body
-    edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('edit_post.html', form=form, post=[post], edit_post=edit_post)
+    return render_template('edit_post.html', form=form)
 
-#新建帖子的页面
-@main.route('/new/<int:id>', methods=['GET', 'POST'])
-@login_required
-def new(id):
-    form = PostForm()
-    if current_user.can(Permission.WRITE) and form.validate_on_submit():
-        post = Post(body=form.body.data, author=current_user._get_current_object())
-        db.session.add(post)
-        db.session.commit()
-        return redirect(url_for('.index'))
-    page = request.args.get('page', 1, type=int)
-    show_followed = False
-    if current_user.is_authenticated:
-        show_followed = bool(request.cookies.get('show_followed', ''))
-    if show_followed:
-        query = current_user.followed_posts
-    else:
-        query = Post.query
-    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, per_page=current_app.config['HAMBLOGER_POSTS_PER_PAGE'],
-        error_out=False)
-    posts = pagination.items
-    edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('new.html', form=form, posts=posts,
-                           show_followed=show_followed, pagination=pagination, edit_post=edit_post)
 
 # 用户个人主页
 @main.route('/user/<username>')
@@ -110,8 +84,7 @@ def user(username):
     if user is None:
         abort(404)
     posts = user.posts.order_by(Post.timestamp.desc()).all()
-    edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('user.html', user=user, posts=posts, edit_post=edit_post)
+    return render_template('user.html', user=user, posts=posts)
 
 
 # 编辑个人资料
@@ -130,8 +103,7 @@ def edit_profile():
     form.name.data = current_user.name
     form.location.data = current_user.location
     form.about_me.data = current_user.about_me
-    edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('edit_profile.html', form=form, edit_post=edit_post)
+    return render_template('edit_profile.html', form=form)
 
 
 # 关注
@@ -183,10 +155,9 @@ def followers(username):
         error_out=False)
     follows = [{'user': item.follower, 'timestamp': item.timestamp}
                for item in pagination.items]
-    edit_post = Post.query.order_by(Post.id.desc()).first()
     return render_template('followers.html', user=user, title="Followers of",
                            endpoint='.followers', pagination=pagination,
-                           follows=follows, edit_post=edit_post)
+                           follows=follows)
 
 
 # 有谁在关注Ta
@@ -202,17 +173,6 @@ def followed_by(username):
         error_out=False)
     follows = [{'user': item.followed, 'timestamp': item.timestamp}
                for item in pagination.items]
-    edit_post = Post.query.order_by(Post.id.desc()).first()
     return render_template('followers.html', user=user, title="Followed by",
-                           endpoint='.followed_by', pagination=pagination, follows=follows)
-
-@main.route('/', methods=['GET', 'POST'])
-def index():
-    form = PostForm()
-    if current_user.can(Permission.WRITE) and form.validate_on_submit():
-        post = Post(body=form.body.data, author=current_user._get_current_object())
-        db.session.add(post)
-        db.session.commit()
-        return redirect(url_for('.index'))
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', form=form, posts=posts)
+                           endpoint='.followed_by', pagination=pagination,
+                           follows=follows)

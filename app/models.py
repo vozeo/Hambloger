@@ -207,8 +207,6 @@ class Post(db.Model):
     body_html = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    #title = db.Column(db.String(64))
-    #subtitle = db.Column(db.String(64))
 
     # 将body渲染成为html后存入body.html
     @staticmethod

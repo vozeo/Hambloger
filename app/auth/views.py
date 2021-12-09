@@ -1,7 +1,7 @@
 from flask import render_template, redirect, request, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
-from ..models import User, Post
+from ..models import User
 from .forms import LoginForm, RegistrationForm
 from app import db
 
@@ -28,8 +28,7 @@ def login():
                 next = url_for('main.index')
             return redirect(next)
         flash('邮箱或密码错误')
-    edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('auth/login.html', form=form, edit_post=edit_post)
+    return render_template('auth/login.html', form=form)
 
 
 @auth.route('/logout')
@@ -51,5 +50,4 @@ def register():
         db.session.commit()
         flash('你现在可以登录了')
         return redirect(url_for('auth.login'))
-    edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('auth/register.html', form=form, edit_post=edit_post)
+    return render_template('auth/register.html', form=form)
