@@ -1,18 +1,10 @@
-{% extends "base.html" %}
-
-{% block title %}Hambloger - {{ user.username }}{% endblock %}
-
-{% block head %}
+{% extends "base.html" %} {% block title %}Hambloger - {{ user.username }}{% endblock %} {% block head %}
 <link href="{{ url_for('static',filename='css/user.css') }}" rel="stylesheet">
-<link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet"/>
-{% endblock %}
-
-{% block page_content %}
+<link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet" /> {% endblock %} {% block page_content %}
 
 <div class="page-container">
     <div class="user-container">
-        <div class="user-cover-container masthead"
-        style="background-image: url('../static/img/user-bg.jpg')">
+        <div class="user-cover-container masthead" style="background-image: url('../static/img/user-bg.jpg')">
 
         </div>
         <div class="user-profile-container">
@@ -24,6 +16,9 @@
             <div class="user-information-container">
                 <div class="username-container">
                     <span class="username"> {{ user.name }} </span>
+                </div>
+                <div class="username-container">
+                    <span class="userid"> {{ user.id }} </span>
                 </div>
                 <div class="about_me-container">
                     {% if user.about_me %}<span class="about_me">{{ user.about_me }}</span>{% endif %}
@@ -66,16 +61,16 @@
             <ul class="side-content">
                 <li class="side-content-left-item">
                     <a class="option-link" href="{{ url_for('.followers', username=user.username) }}">
-                        关注者 <span class="badge">{{ user.followers.count() - 1 }}</span>
+                        关注者 <span class="badge badge-dark">{{ user.followers.count() - 1 }}</span>
                     </a>
                 </li>
                 <li class="side-content-right-item">
                     <a class="option-link" href="{{ url_for('.followed_by', username=user.username) }}">
-                        关注了 <span class="badge">{{ user.followed.count() - 1 }}</span>
+                        关注了 <span class="badge badge-dark">{{ user.followed.count() - 1 }}</span>
                     </a>
                 </li>
             </ul>
-            <div class="side-content-bos">
+            <div class="side-content-box">
                 <p>
                     hi
                 </p>
@@ -126,6 +121,3 @@
         我们于 {{ moment(user.member_since).format('MMM Do YY') }} 首次见面。<br> 上次登录于 {{ moment(user.last_seen).fromNow() }} 。
     </p>
     -->
-
-
-
