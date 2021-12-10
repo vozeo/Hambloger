@@ -1,6 +1,8 @@
 {% extends "base.html" %} {% block title %}Hambloger - {{ user.username }}{% endblock %} {% block head %}
 <link href="{{ url_for('static',filename='css/user.css') }}" rel="stylesheet">
 <link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet" /> {% endblock %} {% block page_content %}
+<link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
 
 <div class="page-container">
     <div class="user-container">
@@ -71,7 +73,44 @@
                 <h3>
                     <div align="center">{{ user.username }}的文章</div>
                 </h3>
-                {% include '_posts.html' %}
+                <!-- Main Content-->
+                <div class="container px-10">
+                    {% for post in posts %}
+                    <div class="row gx-8 justify-content-center">
+                        <div class="col-10">
+                            <!-- Post preview-->
+                            <div class="post-preview">
+                                <a href="{{ url_for('.post', id=post.id) }}">
+                                    <h3 class="post-title">{{ post.title }}</h3>
+                                    <h4 class="post-subtitle">{{ post.sub_title }}</h4>
+                                </a>
+                                <p class="post-meta">
+                                    Posted by
+                                    <a href="{{ url_for('.user', username=post.author.username) }}" class="context-user-link">
+                                        {{ post.author.username }}
+                                    </a>
+                                    on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                                </p>
+                                <span>
+                                    {{ post.body }}
+                                </span>
+                            </div>
+                            <br/>
+                            <div class="context-operation-container">
+                                <a class="operation-box">
+                                    <img class="operation-img" src="{{url_for('static',filename='icons/share.png') }}">
+                                    <div class="operation-text">分享</div>
+                                </a>
+                                <a class="operation-box">
+                                    <img class="operation-img" src="{{url_for('static',filename='icons/index-star.png') }}">
+                                    <div class="operation-text">收藏</div>
+                                </a>
+                            </div>
+                            <hr class="my-4"/>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
 
