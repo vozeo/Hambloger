@@ -15,6 +15,7 @@
 }
 
 .user-cover-container {
+    background-image: url('../img/user-bg.jpg');
     background-color: rgb(153, 153, 153);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
@@ -115,6 +116,8 @@
 .content-container {
     margin-left: 0;
     height: 700px;
+    position: relative;
+    display: inline-block;
 }
 
 .main-content-container {
@@ -124,11 +127,12 @@
     box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
     border-radius: 2px;
     width: 74%;
+    vertical-align: bottom;
 }
 
 .option-bar {
     background-color: rgb(255, 255, 255);
-    border-bottom: 2px solid rgb(240, 240, 240) ;
+    border-bottom: 2px solid rgb(240, 240, 240);
     height: 60px;
     line-height: 60px;
     list-style-type: none;
@@ -172,6 +176,7 @@
     box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
     border-radius: 2px;
     width: 24%;
+    vertical-align: bottom;
 }
 
 .side-content {
@@ -179,7 +184,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border-bottom: 2px solid rgb(240, 240, 240) ;
+    border-bottom: 2px solid rgb(240, 240, 240);
     height: 60px;
     line-height: 60px;
 }
@@ -189,7 +194,7 @@
     float: left;
     font-size: 15px;
     font-weight: 600;
-    border-right: 2px solid rgb(240, 240, 240) ;
+    border-right: 2px solid rgb(240, 240, 240);
 }
 
 .side-content-left-item a {

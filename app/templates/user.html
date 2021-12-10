@@ -4,9 +4,7 @@
 
 <div class="page-container">
     <div class="user-container">
-        <div class="user-cover-container masthead" style="background-image: url('../static/img/user-bg.jpg')">
-
-        </div>
+        <div class="user-cover-container masthead"></div>
         <div class="user-profile-container">
             <div class="user-mask-container">
                 <div class="user-mask">
@@ -35,8 +33,27 @@
             </div>
         </div>
     </div>
-    <div class="content-container">
-        <div class="main-content-container">
+    <div class="container row">
+
+        <div class="container col-3">
+            <ul class="side-content">
+                <li class="side-content-left-item">
+                    <a class="option-link" href="{{ url_for('.followers', username=user.username) }}">
+                        关注者 <span class="badge badge-dark">{{ user.followers.count() - 1 }}</span>
+                    </a>
+                </li>
+                <li class="side-content-right-item">
+                    <a class="option-link" href="{{ url_for('.followed_by', username=user.username) }}">
+                        关注了 <span class="badge badge-dark">{{ user.followed.count() - 1 }}</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="side-content-box">
+                <p>hi</p>
+            </div>
+        </div>
+
+        <div class="container col-9">
             <ul class="option-bar">
                 <li class="option-item">
                     <a class="option-link" href="">
@@ -57,25 +74,7 @@
                 {% include '_posts.html' %}
             </div>
         </div>
-        <div class="side-content-container">
-            <ul class="side-content">
-                <li class="side-content-left-item">
-                    <a class="option-link" href="{{ url_for('.followers', username=user.username) }}">
-                        关注者 <span class="badge badge-dark">{{ user.followers.count() - 1 }}</span>
-                    </a>
-                </li>
-                <li class="side-content-right-item">
-                    <a class="option-link" href="{{ url_for('.followed_by', username=user.username) }}">
-                        关注了 <span class="badge badge-dark">{{ user.followed.count() - 1 }}</span>
-                    </a>
-                </li>
-            </ul>
-            <div class="side-content-box">
-                <p>
-                    hi
-                </p>
-            </div>
-        </div>
+
     </div>
 </div>
 {% endblock %}
