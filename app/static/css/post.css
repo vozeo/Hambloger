@@ -7,3 +7,23 @@
     margin-left: 20%;
     width: 60%;
 }
+
+.page-container {
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(18, 18, 18, .1);
+}
+
+.top-cover {
+    background-image: url('../img/user-bg.jpg');
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 80px;
+}
+
+.title-container {
+    text-align: center;
+}
