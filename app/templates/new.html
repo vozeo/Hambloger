@@ -8,12 +8,17 @@
 {% endblock %}
 
 {% block page_content %}
-<div class="posts">
-    <h1>发表文章</h1>
+<div class="page-container py-2">
+    <div class="top-cover"></div>
+    <div class="title-container py-3">
+        <h1>发表文章</h1>
+    </div>
 </div>
-<div class=posts>
+<div class="posts py-3">
     {{ wtf.quick_form(form) }}
 </div>
+
+
 {% endblock %}
 
 {% block scripts %}
