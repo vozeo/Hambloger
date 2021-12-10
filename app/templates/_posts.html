@@ -1,27 +1,32 @@
 <!-- 作为显示帖子的模块被其他html文件引用，下划线用以区分是否为完整模板 -->
 {% block head %}
-    <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet"/>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
 {% endblock %}
 
-<ul class='posts'>
+<div class="container px-9">
     {% for post in posts %}
-    <li class='post'>
+    <div class="post gx-8 justify-content-center">
         <div class="profile-thumbnail">
-            <a href="{{ url_for('.user', username=post.author.username) }}">
-            </a>
+            <h4 class="post-title">{{ post.title }}</h4>
+            <h5 class="post-subtitle">{{ post.sub_title }}</h5>
+            <a href="{{ url_for('.user', username=post.author.username) }}"></a>
         </div>
         <div class="post-content">
+            <!--
             <div class="post-date">{{ moment(post.timestamp).fromNow() }}</div>
             <div class="post-author">
                 <a href="{{ url_for('.user', username=post.author.username) }}">
                     {{ post.author.username }}
                 </a>
             </div>
+            -->
             <div class="post-body">
                 {% if post.body_html %}
-                    {{ post.body_html | safe }}
+                {{ post.body_html | safe }}
                 {% else %}
-                    {{ post.body }}
+                {{ post.body }}
                 {% endif %}
             </div>
             <div class="post-footer">
@@ -35,6 +40,6 @@
                 </a>
             </div>
         </div>
-    </li>
+    </div>
     {% endfor %}
-</ul>
+</div>
