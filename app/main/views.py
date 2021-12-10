@@ -57,7 +57,7 @@ def show_followed():
 def post(id):
     post = Post.query.get_or_404(id)
     edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('post.html', post=[post], 
+    return render_template('post.html', posts=[post], 
                             edit_post=edit_post)
 
 
@@ -78,7 +78,7 @@ def edit(id):
         return redirect(url_for('.post', id=post.id))
     form.body.data = post.body
     edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('edit_post.html', form=form, post=[post], edit_post=edit_post)
+    return render_template('edit_post.html', form=form, posts=[post], edit_post=edit_post)
 
 #新建帖子的页面
 @main.route('/new/<int:id>', methods=['GET', 'POST'])

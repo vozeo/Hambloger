@@ -60,7 +60,7 @@
                         <a href="{{ url_for('.user', username=post.author.username) }}" class="context-user-link">
                             {{ post.author.username }}
                         </a>
-                        on December 13, 2021
+                        on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
                     </p>
                     <span>
                         {{ post.body }}
