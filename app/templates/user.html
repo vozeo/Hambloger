@@ -71,16 +71,16 @@
             <ul class="side-content">
                 <li class="side-content-left-item">
                     <a class = "option-link" href="{{ url_for('.followers', username=user.username) }}">
-                        关注者 <span class="badge">{{ user.followers.count() - 1 }}</span>
+                        关注者 <span class="badge badge-dark">{{ user.followers.count() - 1 }}</span>
                     </a>
                 </li>
                 <li class="side-content-right-item">
                     <a class = "option-link" href="{{ url_for('.followed_by', username=user.username) }}">
-                        关注了 <span class="badge">{{ user.followed.count() - 1 }}</span>
+                        关注了 <span class="badge badge-dark">{{ user.followed.count() - 1 }}</span>
                     </a>
                 </li>
             </ul>
-            <div class="side-content-bos">
+            <div class="side-content-box">
                 <p>
                 hi
                 </p>
