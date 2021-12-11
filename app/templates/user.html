@@ -43,22 +43,34 @@ Hambloger - {{ user.username }}
                     </a>
                 </div>
                 {% else %}
-                <div class="edit-pro-operation-container">
-                    <a href="{{ url_for('.edit_profile') }}">
-                        <button type="button" class="edit-profile-button">
-                            <span>编辑个人资料</span>
-                        </button>
-                    </a>
-                </div>
+                    {% if current_user.can(Permission.FOLLOW) and user != current_user %}
+                        {% if not current_user.is_following(user) %}
+                        <div class="edit-pro-operation-container">
+                            <a href="{{ url_for('.follow', username=user.username) }}">
+                                <button type="button" class="follow-button">
+                                    <span>+ 关注</span>
+                                </button>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="edit-pro-operation-container">
+                            <a href="{{ url_for('.unfollow', username=user.username) }}">
+                                <button type="button" class="follow-button">
+                                    <span>取消关注</span>
+                                </button>
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
                 <div class="follow-operation-container">
                     <a class="option-link" href="{{ url_for('.followers', username=user.username) }}">
-                        关注数 <span class="badge badge-dark">{{ user.followers.count() - 1 }}</span>
+                        粉丝数 <span class="badge badge-dark">{{ user.followers.count() - 1 }}</span>
                     </a>
                 </div>
                 <div class="follow-operation-container">
                     <a class="option-link" href="{{ url_for('.followed_by', username=user.username) }}">
-                        粉丝数 <span class="badge badge-dark">{{ user.followed.count() - 1 }}</span>
+                        关注数 <span class="badge badge-dark">{{ user.followed.count() - 1 }}</span>
                     </a>
                 </div>
             </div>
