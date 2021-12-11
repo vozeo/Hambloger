@@ -29,3 +29,20 @@
     border-radius: 5px;
     height: 80px;
 }
+
+.post-preview {
+    color: black;
+}
+
+.post-title {
+    text-align: center;
+}
+
+.post-subtitle {
+    color:gray;
+    text-align: center;
+}
+
+.post-meta {
+        text-align: center;
+}
