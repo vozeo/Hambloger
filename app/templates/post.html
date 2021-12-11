@@ -2,11 +2,40 @@
 
 {% block head %}
 <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet"/>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
 <header class="top-cover"></header>
 {% endblock %}
 
 {% block title %}Hambloger - 文章{% endblock %}
 
 {% block page_content %}
-{% include '_posts.html' %}
+<div class="container px-9">
+    {% for post in posts %}
+    <div class="row gx-8 justify-content-center">
+        <div class="col-10">
+            <div class="post-preview py-3">
+                <h2 class="post-title">{{ post.title }}</h2>
+                <h4 class="post-subtitle">{{ post.sub_title }}</h4>
+                <p class="post-meta">
+                    Posted by
+                    <a href="{{ url_for('.user', username=post.author.username) }}"
+                       class="context-user-link">
+                        {{ post.author.username }}
+                    </a>
+                    on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                </p>
+                <span>{{ post.body }}</span>
+                <div class="post-footer py-3">
+                    {% if current_user == post.author %}
+                    <a class="mx-auto py-3 justify-content-center" href="{{ url_for('.edit', id=post.id) }}">
+                        <button class="btn btn-primary">编辑</button>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
