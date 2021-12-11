@@ -19,6 +19,7 @@
 }
 
 .user-cover-container {
+    background-image: url('../img/page-bg.jpg');
     background-color: rgb(153, 153, 153);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;

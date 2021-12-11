@@ -3,6 +3,7 @@
 
 {% block head %}
 <link href="{{ url_for('static',filename='css/edit-profile.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/admin.css') }}" rel="stylesheet">
 <header class="user-top-cover"></header>
 {% endblock %}
 
@@ -25,7 +26,7 @@
                     {{form.name(class="input-item", placeholder="修改昵称")}}
                     {{form.location(class="input-item",placeholder="修改地址")}}
                     {{form.about_me(class="input-item-text",placeholder="修改个人简介")}}
-                    {{form.submit(class="btn")}}
+                    {{form.submit(class="btn btn-primary")}}
                 </form>
             </div>
         </div>
