@@ -235,3 +235,16 @@
     background-color: rgb(255, 255, 255);
 }
 
+.follow-operation-container {
+    float: right;
+    margin-right: 40px;
+    margin-top: 6px;
+}
+
+.edit-pro-operation-container {
+    float: right;
+}
+
+.main-show-container {
+    margin: 2px;
+}
