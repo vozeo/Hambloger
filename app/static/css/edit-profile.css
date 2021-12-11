@@ -5,6 +5,11 @@
     width: 60%;
 }
 
+.user-top-cover {
+    background-image: url('../img/user-bg.jpg');
+    height: 80px;
+}
+
 .user-container {
     display: block;
     background-color: rgb(255, 255, 255);

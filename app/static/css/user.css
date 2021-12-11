@@ -113,6 +113,11 @@
     background-color: #06f;
 }
 
+.user-top-cover {
+    background-image: url('../img/user-bg.jpg');
+    height: 80px;
+}
+
 .content-container {
     margin-left: 0;
     height: 700px;
