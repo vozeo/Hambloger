@@ -110,6 +110,11 @@ Hambloger - {{ user.username }}
                     </div>
                     {% endfor %}
                 </div>
+                {% if pagination %}
+                <div class="pagination">
+                    {{ macros.pagination_widget(pagination, '.index') }}
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
