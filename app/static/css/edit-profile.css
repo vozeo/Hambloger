@@ -11,6 +11,7 @@
 }
 
 .user-container {
+    background-image: url('../img/page-bg.jpg');
     display: block;
     background-color: rgb(255, 255, 255);
     margin-top: 12px;
@@ -19,7 +20,7 @@
 }
 
 .user-cover-container {
-    background-image: url('../img/page-bg.jpg');
+    opacity: 0;
     background-color: rgb(153, 153, 153);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
@@ -27,6 +28,9 @@
 }
 
 .user-profile-container {
+    opacity: 0.85;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     height: 300px;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
