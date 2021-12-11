@@ -5,20 +5,28 @@
 
 {% block head %}
 <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
+<header class="top-cover"></header>
 {% endblock %}
 
 {% block page_content %}
+<br/>
 <div class="page-container py-2">
-    <div class="top-cover"></div>
-    <div class="title-container py-3">
+    <div class="title-container py-3 page-heading">
         <h1>发表文章</h1>
     </div>
 </div>
 <div class="posts py-3">
-    {{ wtf.quick_form(form) }}
+    <form method="POST">
+        {{ form.title(class="form-control w-100 py-2",placeholder="标题") }}
+        <div class="py-2"></div>
+        {{ form.sub_title(class="form-control w-100 py-2",placeholder="副标题") }}
+        <div class="py-2"></div>
+        {{ form.body(class="form-control", placeholder="要写点什么？") }}
+        <div class="mx-auto py-3 row justify-content-center">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
 </div>
-
-
 {% endblock %}
 
 {% block scripts %}

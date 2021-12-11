@@ -18,12 +18,12 @@
 }
 
 .top-cover {
-    background-image: url('../img/user-bg.jpg');
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    background-image: url('../img/new-bg.jpg');
     height: 80px;
 }
 
 .title-container {
     text-align: center;
+    border-radius: 5px;
+    height: 80px;
 }

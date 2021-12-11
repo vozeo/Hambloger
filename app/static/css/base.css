@@ -16,6 +16,11 @@ div {
     display: block;
 }
 
+.head-cover {
+    background-image: url('../img/home-bg.jpg');
+    height: 80px;
+}
+
 .navbar-container {
     background-color: rgb(9, 7, 35);
     height: 50px;

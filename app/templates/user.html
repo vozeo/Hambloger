@@ -1,6 +1,16 @@
-{% extends "base.html" %} {% block title %}Hambloger - {{ user.username }}{% endblock %} {% block head %}
+{% extends "base.html" %}
+
+{% block title %}
+Hambloger - {{ user.username }}
+{% endblock %}
+
+{% block head %}
 <link href="{{ url_for('static',filename='css/user.css') }}" rel="stylesheet">
-<link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet" /> {% endblock %} {% block page_content %}
+<link href="{{ url_for('static', filename='css/admin.css') }}"
+      rel="stylesheet"/>
+{% endblock %}
+
+{% block page_content %}
 <link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet">
 <link href="{{ url_for('static',filename='css/post.css') }}" rel="stylesheet">
 
@@ -84,7 +94,8 @@
                                 </a>
                                 <p class="post-meta">
                                     Posted by
-                                    <a href="{{ url_for('.user', username=post.author.username) }}" class="context-user-link">
+                                    <a href="{{ url_for('.user', username=post.author.username) }}"
+                                       class="context-user-link">
                                         {{ post.author.username }}
                                     </a>
                                     on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
@@ -100,7 +111,8 @@
                                     <div class="operation-text">分享</div>
                                 </a>
                                 <a class="operation-box">
-                                    <img class="operation-img" src="{{url_for('static',filename='icons/index-star.png') }}">
+                                    <img class="operation-img"
+                                         src="{{url_for('static',filename='icons/index-star.png') }}">
                                     <div class="operation-text">收藏</div>
                                 </a>
                             </div>
