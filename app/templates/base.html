@@ -17,7 +17,7 @@
           rel="stylesheet" type="text/css"/>
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
     <link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet"/>
-        <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet"/>
     {% block head %}
     {% endblock %}
 </head>
@@ -161,14 +161,18 @@
                         </a>
                     </li>
                 </ul>
-                <div class="small text-center text-muted fst-italic">Copyright &copy; Hambloger 2021 by Group 7,
+                <div class="text-center text-muted fst-italic">Copyright &copy; Hambloger 2021 by Group 7,
                     CS10070902
                 </div>
-                <div class="small text-center text-muted fst-italic">小组成员：成笑行 陈奕澄 李博宇 庞皓天 王钧涛 张弛 朱泽凯</div>
+                <div class="text-center text-muted fst-italic">小组成员：成笑行 陈奕澄 李博宇 庞皓天 王钧涛 张弛 朱泽凯</div>
             </div>
         </div>
     </div>
 </footer>
+
+    <a class="small" href="{{ url_for('.game') }}">
+        <p>不想学习？</p>
+    </a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>

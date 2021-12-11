@@ -57,8 +57,8 @@ def show_followed():
 def post(id):
     post = Post.query.get_or_404(id)
     edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('post.html', posts=[post], 
-                            edit_post=edit_post)
+    return render_template('post.html', posts=[post],
+                           edit_post=edit_post)
 
 
 # 编辑帖子的页面
@@ -80,13 +80,14 @@ def edit(id):
     edit_post = Post.query.order_by(Post.id.desc()).first()
     return render_template('edit_post.html', form=form, posts=[post], edit_post=edit_post)
 
-#新建帖子的页面
+
+# 新建帖子的页面
 @main.route('/new/<int:id>', methods=['GET', 'POST'])
 @login_required
 def new(id):
     form = PostForm()
     if current_user.can(Permission.WRITE) and form.validate_on_submit():
-        post = Post(body=form.body.data, author=current_user._get_current_object(), 
+        post = Post(body=form.body.data, author=current_user._get_current_object(),
                     title=form.title.data, sub_title=form.sub_title.data)
         db.session.add(post)
         db.session.commit()
@@ -106,6 +107,7 @@ def new(id):
     edit_post = Post.query.order_by(Post.id.desc()).first()
     return render_template('new.html', form=form, posts=posts,
                            show_followed=show_followed, pagination=pagination, edit_post=edit_post)
+
 
 # 用户个人主页
 @main.route('/user/<username>')
@@ -210,3 +212,8 @@ def followed_by(username):
     return render_template('followers.html', user=user, title="Followed by",
                            endpoint='.followed_by', pagination=pagination,
                            follows=follows, edit_post=edit_post)
+
+
+@main.route('/game')
+def game():
+    return render_template('game.html')
