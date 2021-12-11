@@ -52,7 +52,7 @@ def show_followed():
     return resp
 
 
-# 查看帖子，但是不知道为什么文章没法显示，class post挂了
+# 查看帖子
 @main.route('/post/<int:id>')
 def post(id):
     post = Post.query.get_or_404(id)
@@ -76,6 +76,8 @@ def edit(id):
         db.session.commit()
         flash('更新成功。')
         return redirect(url_for('.post', id=post.id))
+    form.title.data = post.title
+    form.sub_title.data = post.sub_title
     form.body.data = post.body
     edit_post = Post.query.order_by(Post.id.desc()).first()
     return render_template('edit_post.html', form=form, posts=[post], edit_post=edit_post)
