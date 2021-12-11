@@ -47,7 +47,7 @@ Hambloger - {{ user.username }}
         </div>
     </div>
     <div class="container row">
-        <div class="container col-3">
+        <div class="container  col-3">
             <ul class="side-content">
                 <li class="side-content-left-item">
                     <a class="option-link" href="{{ url_for('.followers', username=user.username) }}">
@@ -79,9 +79,11 @@ Hambloger - {{ user.username }}
                 </li>
             </ul>
             <div class="main-content-box">
+                <!--
                 <h3>
                     <div align="center">{{ user.username }}的文章</div>
                 </h3>
+                -->
                 <!-- Main Content-->
                 <div class="container px-10">
                     {% for post in posts %}

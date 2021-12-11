@@ -1,4 +1,5 @@
 .page-container {
+    background-image: url('../img/page-bg.jpg');
     display: block;
     margin-left: 10%;
     margin-right: 10%;
@@ -6,6 +7,7 @@
 }
 
 .user-container {
+    background-image: url('../img/page-bg.jpg');
     display: block;
     background-color: rgb(255, 255, 255);
     margin-top: 12px;
@@ -14,9 +16,12 @@
     border-radius: 2px;
 }
 
+.container {
+    opacity: 0.9;
+    color: rgb(0, 0, 0);
+}
+
 .user-cover-container {
-    background-image: url('../img/page-bg.jpg');
-    background-color: rgb(153, 153, 153);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     height: 50%;
@@ -24,11 +29,15 @@
 
 .user-profile-container {
     height: 50%;
+    opacity: 0.7;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
 }
 
 .user-mask-container {
+    opacity: 1;
     float: left;
     position: relative;
     top: -50%;
@@ -123,6 +132,10 @@
     height: 700px;
     position: relative;
     display: inline-block;
+}
+
+.main-container {
+
 }
 
 .main-content-container {
