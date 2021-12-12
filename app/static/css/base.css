@@ -181,6 +181,10 @@ div {
     padding: 0;
 }
 
+.main-container {
+    position: relative;
+}
+
 footer {
     text-align: center;
 }
