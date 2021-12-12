@@ -23,13 +23,12 @@
 
 {% block page_content %}
 <div class="page-container">
-    <div class="index-page-header">
+    <!--
+        <div class="index-page-header">
         <div class="header-operation-container">
             <div class="index-header-operation-box">
                 <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">
-                <!--
                     <a href="{{ url_for('.show_all') }}">全部</a>
-                -->
                 全部
                 </button>
             </div>
@@ -39,15 +38,13 @@
             {% if current_user.is_authenticated %}
             <div class="index-header-operation-box">
                 <button class="index-header-operation" id="index-btn3" onclick="index_change(3)">
-                <!--
-                    <a href="{{ url_for('.show_followed') }}">关注</a>
-                -->
-                收藏
+                    <a href="{{ url_for('.show_followed') }}" class="show-follow-operation">关注</a>
                 </button>
             </div>
             {% endif %}
         </div>
     </div>
+    -->
 
     <!-- Main Content-->
     <div class="container px-10">
