@@ -46,25 +46,25 @@ Hambloger - {{ user.username }}
                     </a>
                 </div>
                 {% else %}
-                {% if current_user.can(Permission.FOLLOW) and user != current_user %}
-                {% if not current_user.is_following(user) %}
-                <div class="edit-pro-operation-container">
-                    <a href="{{ url_for('.follow', username=user.username) }}">
-                        <button type="button" class="follow-button">
-                            <span>+ 关注</span>
-                        </button>
-                    </a>
-                </div>
-                {% else %}
-                <div class="edit-pro-operation-container">
-                    <a href="{{ url_for('.unfollow', username=user.username) }}">
-                        <button type="button" class="follow-button">
-                            <span>取消关注</span>
-                        </button>
-                    </a>
-                </div>
-                {% endif %}
-                {% endif %}
+                    {% if current_user.can(Permission.FOLLOW) and user != current_user %}
+                        {% if not current_user.is_following(user) %}
+                        <div class="edit-pro-operation-container">
+                            <a href="{{ url_for('.follow', username=user.username) }}">
+                                <button type="button" class="follow-button">
+                                    <span>+ 关注</span>
+                                </button>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="edit-pro-operation-container">
+                            <a href="{{ url_for('.unfollow', username=user.username) }}">
+                                <button type="button" class="follow-button">
+                                    <span>取消关注</span>
+                                </button>
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
                 <div class="follow-operation-container">
                     <a class="option-link" href="{{ url_for('.followers', username=user.username) }}">
@@ -132,29 +132,29 @@ Hambloger - {{ user.username }}
                                     <h3 class="post-title">{{ post.title }}</h3>
                                     <h4 class="post-subtitle">{{ post.sub_title }}</h4>
                                 </a>
-                            </div>
-                            <p class="post-meta">
-                                Posted by
-                                <a href="{{ url_for('.user', username=post.author.username) }}"
-                                   class="context-user-link">
-                                    {{ post.author.username }}
-                                </a>
-                                on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
-                            </p>
-                            <span>
+                                <p class="post-meta">
+                                    Posted by
+                                    <a href="{{ url_for('.user', username=post.author.username) }}"
+                                       class="context-user-link">
+                                        {{ post.author.username }}
+                                    </a>
+                                    on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                                </p>
+                                <span>
                                     {{ post.body }}
-                            </span>
+                                </span>
+                            </div>
+                            <hr class="my-4"/>
                         </div>
-                        <hr class="my-4"/>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                {% if pagination %}
+                <div class="pagination">
+                    {{ macros.pagination_widget(pagination, endpoint, username = user.username) }}
+                </div>
+                {% endif %}
             </div>
-            {% if pagination %}
-            <div class="pagination">
-                {{ macros.pagination_widget(pagination, endpoint, username = user.username) }}
-            </div>
-            {% endif %}
         </div>
     </div>
 </div>
