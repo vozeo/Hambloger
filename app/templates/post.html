@@ -23,7 +23,7 @@
                        class="context-user-link">
                         {{ post.author.username }}
                     </a>
-                    on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                    on {{ moment(post.timestamp).format('LLL') }}
                 </p>
                 <span>{{ post.body }}</span>
                 <div class="post-footer py-3">

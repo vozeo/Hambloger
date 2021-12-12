@@ -18,6 +18,7 @@
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
     <link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet"/>
     <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet"/>
+    {{ moment.include_moment() }}
     {% block head %}
     {% endblock %}
 </head>
