@@ -82,7 +82,7 @@
         {% endfor %}
     </div>
 
-    <div class="posts-header">
+    <div class="posts-header col-8">
         {% if current_user.can(Permission.WRITE) %}
         <form method="POST">
             {{ form.hidden_tag() }}
