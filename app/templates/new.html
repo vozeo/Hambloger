@@ -16,7 +16,9 @@
     </div>
 </div>
 <div class="posts py-3">
+    {% if current_user.can(Permission.WRITE) %}
     <form method="POST">
+        {{ form.hidden_tag() }}
         {{ form.title(class="form-control w-100 py-2",placeholder="标题") }}
         <div class="py-2"></div>
         {{ form.sub_title(class="form-control w-100 py-2",placeholder="副标题") }}
@@ -26,6 +28,7 @@
             {{ form.submit(class="btn btn-primary") }}
         </div>
     </form>
+    {% endif %}
 </div>
 {% endblock %}
 

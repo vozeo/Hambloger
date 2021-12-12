@@ -17,7 +17,9 @@
     </div>
 </div>
 <div class="posts py-3">
+    {% if current_user.can(Permission.WRITE) %}
     <form method="POST">
+        {{ form.hidden_tag() }}
         <div class="py-2">
              <h6>标题</h6>
         </div>
@@ -34,6 +36,7 @@
             {{ form.submit(class="btn btn-primary") }}
         </div>
     </form>
+    {% endif %}
 </div>
 {% endblock %}
 
