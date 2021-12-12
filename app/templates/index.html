@@ -27,7 +27,10 @@
         <div class="header-operation-container">
             <div class="index-header-operation-box">
                 <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">
+                <!--
                     <a href="{{ url_for('.show_all') }}">全部</a>
+                -->
+                全部
                 </button>
             </div>
             <div class="index-header-operation-box">
@@ -36,7 +39,10 @@
             {% if current_user.is_authenticated %}
             <div class="index-header-operation-box">
                 <button class="index-header-operation" id="index-btn3" onclick="index_change(3)">
+                <!--
                     <a href="{{ url_for('.show_followed') }}">关注</a>
+                -->
+                关注
                 </button>
             </div>
             {% endif %}
@@ -104,9 +110,8 @@
     <script>
         let x = 2;
         document.getElementById("index-btn2").style.color = "#ff0000";
-
         function index_change(ele_id) {
-            for (let i = 1; i <= 2; i++)
+            for (let i = 1; i <= 3; i++)
                 document.getElementById("index-btn" + i).style.color = "#000000";
             document.getElementById("index-btn" + ele_id).style.color = "#ff0000";
         }
