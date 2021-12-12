@@ -27,22 +27,13 @@
         <div class="header-operation-container">
             <div class="index-header-operation-box">
                 <button class="index-header-operation" id="index-btn1" onclick="index_change(1)">
-                <!--
                     <a href="{{ url_for('.show_all') }}">全部</a>
-                -->
-                全部
                 </button>
-            </div>
-            <div class="index-header-operation-box">
-                <button class="index-header-operation" id="index-btn2" onclick="index_change(2)">推荐</button>
             </div>
             {% if current_user.is_authenticated %}
             <div class="index-header-operation-box">
                 <button class="index-header-operation" id="index-btn3" onclick="index_change(3)">
-                <!--
                     <a href="{{ url_for('.show_followed') }}">关注</a>
-                -->
-                收藏
                 </button>
             </div>
             {% endif %}
@@ -106,16 +97,6 @@
         {{ macros.pagination_widget(pagination, '.index') }}
     </div>
     {% endif %}
-
-    <script>
-        let x = 2;
-        document.getElementById("index-btn2").style.color = "#ff0000";
-        function index_change(ele_id) {
-            for (let i = 1; i <= 3; i++)
-                document.getElementById("index-btn" + i).style.color = "#000000";
-            document.getElementById("index-btn" + ele_id).style.color = "#ff0000";
-        }
-    </script>
 
 </div>
 
