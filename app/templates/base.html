@@ -61,11 +61,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('main.user', username=current_user.username) }}">
-                        <!--<img src="{{ url_for('static', filename='icons/sidebar-paper.png') }}" class="sidebar-img">-->
-                        <span>我的文章</span>
-                    </a></li>
-                <li class="nav-item">
                     <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ url_for('.followed_by', username=current_user.username) }}">
                         <!--<img src="{{ url_for('static', filename='icons/sidebar-follow.png') }}" class="sidebar-img">-->
                         <span>我的关注</span>
