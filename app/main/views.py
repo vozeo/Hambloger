@@ -119,7 +119,11 @@ def user(username):
         abort(404)
     posts = user.posts.order_by(Post.timestamp.desc()).all()
     edit_post = Post.query.order_by(Post.id.desc()).first()
-    return render_template('user.html', user=user, posts=posts, edit_post=edit_post)
+    page = request.args.get('page', 1, type=int)
+    pagination = user.posts.order_by(Post.timestamp.desc()).paginate(
+        page, per_page=current_app.config['HAMBLOGER_POSTS_PER_PAGE'],
+        error_out=False)
+    return render_template('user.html', user=user, posts=posts, endpoint='.user', pagination=pagination, edit_post=edit_post)
 
 
 # 编辑个人资料
