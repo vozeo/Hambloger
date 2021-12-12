@@ -2,6 +2,7 @@ from flask import render_template
 from . import main
 from ..models import Post
 
+
 @main.app_errorhandler(403)
 def prohibition(e):
     edit_post = Post.query.order_by(Post.id.desc()).first()
