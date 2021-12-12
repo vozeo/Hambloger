@@ -20,7 +20,7 @@ Hambloger - {{ user.username }}
         <div class="user-profile-container">
             <div class="user-mask-container">
                 <div class="user-mask">
-                    <img src="{{url_for('static', filename='mask/test-1.jpeg')}}" class="user-mask-img">
+                    <img src="../static/mask/{{user.id}}.png" class="user-mask-img">
                 </div>
             </div>
             <div class="user-information-container">
@@ -28,7 +28,7 @@ Hambloger - {{ user.username }}
                     <span class="username"> {{ user.name }} </span>
                 </div>
                 <div class="username-container">
-                    <span class="userid"> {{ user.id }} </span>
+                    <span class="userid"> userid : {{ user.id }} </span>
                 </div>
                 <div class="about_me-container">
                     {% if user.about_me %}<span class="about_me">{{ user.about_me }}</span>{% endif %}

@@ -16,12 +16,13 @@
         <div class="user-profile-container">
             <div class="user-mask-container">
                 <div class="user-mask">
-                    <img src="{{url_for('static', filename='mask/test-1.jpeg')}}" class="user-mask-img">
+                    <img src="../static/mask/{{current_user.id}}.png" class="user-mask-img">
                 </div>
             </div>
             <div class="user-information-container">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {{ form.hidden_tag() }}
+                    {{form.mask(class="input-mask", placeholder="上传头像")}}
                     {{form.name(class="input-item", placeholder="修改昵称")}}
                     {{form.location(class="input-item",placeholder="修改地址")}}
                     {{form.about_me(class="input-item-text",placeholder="修改个人简介")}}
@@ -32,4 +33,11 @@
     </div>
 </div>
 </div>
+
+<script>
+    function change_mask()
+    {
+
+    }
+</script>
 {% endblock %}

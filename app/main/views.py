@@ -6,6 +6,7 @@ from .forms import EditProfileForm, NameForm, PostForm
 from .. import db
 from ..models import Permission, User, Post
 from ..decorators import admin_required, permission_required
+import os
 
 
 # 刚进网站的主页
@@ -132,6 +133,9 @@ def user(username):
 def edit_profile():
     form = EditProfileForm()
     if form.validate_on_submit():
+        f = form.mask.data
+        filename = (str(current_user.id) + '.png')
+        f.save(os.path.join('app/static/mask/',filename))
         current_user.name = form.name.data
         current_user.location = form.location.data
         current_user.about_me = form.about_me.data
