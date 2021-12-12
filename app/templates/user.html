@@ -27,9 +27,11 @@ Hambloger - {{ user.username }}
                 <div class="username-container">
                     <span class="username"> {{ user.name }} </span>
                 </div>
+                <!--
                 <div class="username-container">
                     <span class="userid"> userid : {{ user.id }} </span>
                 </div>
+                -->
                 <div class="about_me-container">
                     {% if user.about_me %}<span class="about_me">{{ user.about_me }}</span>{% endif %}
                 </div>
@@ -44,25 +46,25 @@ Hambloger - {{ user.username }}
                     </a>
                 </div>
                 {% else %}
-                {% if current_user.can(Permission.FOLLOW) and user != current_user %}
-                {% if not current_user.is_following(user) %}
-                <div class="edit-pro-operation-container">
-                    <a href="{{ url_for('.follow', username=user.username) }}">
-                        <button type="button" class="follow-button">
-                            <span>+ 关注</span>
-                        </button>
-                    </a>
-                </div>
-                {% else %}
-                <div class="edit-pro-operation-container">
-                    <a href="{{ url_for('.unfollow', username=user.username) }}">
-                        <button type="button" class="follow-button">
-                            <span>取消关注</span>
-                        </button>
-                    </a>
-                </div>
-                {% endif %}
-                {% endif %}
+                    {% if current_user.can(Permission.FOLLOW) and user != current_user %}
+                        {% if not current_user.is_following(user) %}
+                        <div class="edit-pro-operation-container">
+                            <a href="{{ url_for('.follow', username=user.username) }}">
+                                <button type="button" class="follow-button">
+                                    <span>+ 关注</span>
+                                </button>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="edit-pro-operation-container">
+                            <a href="{{ url_for('.unfollow', username=user.username) }}">
+                                <button type="button" class="follow-button">
+                                    <span>取消关注</span>
+                                </button>
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
                 <div class="follow-operation-container">
                     <a class="option-link" href="{{ url_for('.followers', username=user.username) }}">
@@ -78,52 +80,81 @@ Hambloger - {{ user.username }}
         </div>
     </div>
     <div class="container main-show-container py-5">
-        <ul class="option-bar">
-            <li class="option-item">
-                <a class="option-link" href="">
-                    我的文章
-                </a>
-                <a class="option-link" href="">
-                    关注的文章
-                </a>
-                <a class="option-link" href="">
-                    收藏的文章
-                </a>
-            </li>
-        </ul>
-        <div class="main-content-box">
-            <div class="container px-10">
-                {% for post in posts %}
-                <div class="row gx-8 justify-content-center">
-                    <div class="col-10">
-                        <!-- Post preview-->
-                        <div class="post-preview">
-                            <a href="{{ url_for('.post', id=post.id) }}">
-                                <h3 class="post-title">{{ post.title }}</h3>
-                                <h4 class="post-subtitle">{{ post.sub_title }}</h4>
-                            </a>
-                            <p class="post-meta">
-                                Posted by
-                                <a href="{{ url_for('.user', username=post.author.username) }}"
-                                   class="context-user-link">
-                                    {{ post.author.username }}
+        <!--
+        <div class="container  col-3">
+                <ul class="side-content">
+                <li class="side-content-left-item">
+                    <a class="option-link" href="{{ url_for('.followers', username=user.username) }}">
+                        关注数 <span class="badge badge-dark">{{ user.followers.count() - 1 }}</span>
+                    </a>
+                </li>
+                <li class="side-content-right-item">
+                    <a class="option-link" href="{{ url_for('.followed_by', username=user.username) }}">
+                        粉丝数 <span class="badge badge-dark">{{ user.followed.count() - 1 }}</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="side-content-box">
+                <p>广告位招租！</p>
+            </div>
+        </div>
+        -->
+        <div class="container main-show-container">
+            <ul class="option-bar">
+                <li class="option-item">
+                    <a class="option-link" href="">
+                        我的文章
+                    </a>
+                    <a class="option-link" href="{{ url_for('.show_followed') }}">
+                        关注的文章
+                    </a>
+                    <!--
+                        <a class="option-link" href="">
+                        收藏的文章
+                    </a>
+                    -->
+                </li>
+            </ul>
+            <div class="main-content-box">
+                <!--
+                <h3>
+                    <div align="center">{{ user.username }}的文章</div>
+                </h3>
+                -->
+                <!-- Main Content-->
+                <div class="container px-10">
+                    {% for post in posts %}
+                    <div class="row gx-8 justify-content-center">
+                        <div class="col-10">
+                            <!-- Post preview-->
+                            <div class="post-preview">
+                                <a href="{{ url_for('.post', id=post.id) }}">
+                                    <h3 class="post-title">{{ post.title }}</h3>
+                                    <h4 class="post-subtitle">{{ post.sub_title }}</h4>
                                 </a>
-                                on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
-                            </p>
-                            <span>
+                                <p class="post-meta">
+                                    Posted by
+                                    <a href="{{ url_for('.user', username=post.author.username) }}"
+                                       class="context-user-link">
+                                        {{ post.author.username }}
+                                    </a>
+                                    on {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+                                </p>
+                                <span>
                                     {{ post.body }}
                                 </span>
+                            </div>
+                            <hr class="my-4"/>
                         </div>
-                        <hr class="my-4"/>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                {% if pagination %}
+                <div class="pagination">
+                    {{ macros.pagination_widget(pagination, endpoint, username = user.username) }}
+                </div>
+                {% endif %}
             </div>
-            {% if pagination %}
-            <div class="pagination">
-                {{ macros.pagination_widget(pagination, endpoint, username = user.username) }}
-            </div>
-            {% endif %}
         </div>
     </div>
 </div>
