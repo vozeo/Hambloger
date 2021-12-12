@@ -135,7 +135,8 @@ def edit_profile():
     if form.validate_on_submit():
         f = form.mask.data
         filename = (str(current_user.id) + '.png')
-        f.save(os.path.join('app/static/mask/',filename))
+        if (f is not None):
+            f.save(os.path.join('app/static/mask/',filename))
         current_user.name = form.name.data
         current_user.location = form.location.data
         current_user.about_me = form.about_me.data

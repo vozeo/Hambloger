@@ -115,6 +115,9 @@ class User(UserMixin, db.Model):
                 self.role = Role.query.filter_by(name='Administrator').first()
             if self.role is None:
                 self.role = Role.query.filter_by(name='User').first()
+        default_post = Post(title="新用户加入", sub_title="很高兴见到你", author_id=self.id)
+        db.session.add(default_post)
+        db.session.commit()
         self.follow(self)
 
     # 关注自己
