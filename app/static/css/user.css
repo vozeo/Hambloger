@@ -237,8 +237,9 @@
 
 .follow-operation-container {
     float: right;
-    margin-right: 40px;
-    margin-top: 6px;
+    padding-right: 20px;
+    padding-top: 6px;
+    width: 100px;
 }
 
 .edit-pro-operation-container {
