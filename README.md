@@ -1,6 +1,11 @@
 # Hambloger
  A blog in Computer Science Introduction course.
 
+![home](.\resources\home.png)
+
+![user](D:\GitHub\Hambloger\resources\user.png)
+
+![foot](D:\GitHub\Hambloger\resources\foot.png)
 
 ## 更新日志
 
